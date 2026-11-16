@@ -6,6 +6,7 @@ export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 # Not needed if a Display Manager (like SDDM) is set up
 if [[ -z $WAYLAND_DISPLAY && $(tty) == /dev/tty1 ]]; then
     exec mango
+    /usr/lib/xdg-desktop-portal-wlr &
 fi
 
 # GNOME Keyring

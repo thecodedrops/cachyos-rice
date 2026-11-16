@@ -1,9 +1,11 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Effects
 
 import Quickshell
 import Quickshell.Io
+import Quickshell.Wayland
 import Quickshell.Services.Polkit
 import Quickshell.Services.UPower
 
@@ -11,6 +13,7 @@ import qs.Widgets
 import qs.Layouts
 import qs.Services
 import qs.Utilities
+import qs.Views.System
 import qs.Views.Battery
 
 ShellRoot {
@@ -130,7 +133,33 @@ ShellRoot {
                 if (agent.isActive) EventOrchestrator.polkitEvent(agent)
             }
         }
+
+        Process {
+            id: _ProcessWallpaperProvider
+            running: true
+            command: [ "swaybg", "-i", Debug.uri(Constants.system_wallpaper_path), "-m", "fill" ]
+        }
     }
 
     BatteryMonitor { device: UPower.displayDevice }
+
+	LockContext {
+		id: lockContext
+		onUnlocked: lock.locked = false;
+	}
+
+    Connections {
+        target: EventOrchestrator
+        function onLockDevice() {
+            lock.locked = true;
+        }
+    }
+
+	WlSessionLock {
+		id: lock
+		locked: false
+
+        LockSurface { context: lockContext }
+	}
+
 }

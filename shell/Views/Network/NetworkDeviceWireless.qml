@@ -325,7 +325,8 @@ ColumnLayout {
                                     implicitHeight: Constants.size - (Constants.padding)
                                     padding: Constants.padding/2
                                     echoMode: TextInput.Password
-                                    placeholderText: "Password..."
+				                    inputMethodHints: Qt.ImhSensitiveData
+                                    placeholderText: "Enter password"
                                     placeholderTextColor: Constants.network_color_ink_muted
                                     font.family: Constants.font_family
                                     color: Constants.network_color_ink_default

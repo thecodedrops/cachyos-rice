@@ -26,4 +26,6 @@ Singleton {
     signal consoleDismissContentEvent();
 
     signal polkitEvent(PolkitAgent agent);
+
+    signal lockDevice();
 }

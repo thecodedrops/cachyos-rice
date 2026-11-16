@@ -7,6 +7,7 @@ import Quickshell
 
 import qs
 import qs.Layouts
+import qs.Services
 import qs.Utilities
 import qs.Components
 import qs.Views.Power
@@ -121,6 +122,11 @@ StyledBox {
                 active: root.content === power_options
                 onClicked: root.navigate(power_options)
                 Component { id: power_options; PowerOptions { max_height: 160; } }
+            }
+
+            PowerControl {
+                iconname: "Key.svg"
+                onClicked: EventOrchestrator.lockDevice()
             }
         }
 

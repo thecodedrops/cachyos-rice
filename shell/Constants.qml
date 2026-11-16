@@ -252,12 +252,15 @@ Singleton {
     readonly property color  spotlight_color_background_active:     Qt.alpha(color_surface, 0.20)
 
     // Screen Capture
-    readonly property string screen_capture_command_region:         "$HOME/.config/mango/scripts/satty.sh --region --save"
-    readonly property string screen_capture_command_full:           "$HOME/.config/mango/scripts/satty.sh --full --save"
-    readonly property string screen_capture_command_clipboard:      "$HOME/.config/mango/scripts/satty.sh --clipboard"
+    readonly property string screen_capture_command_region:         "~/.config/mango/scripts/satty.sh --region --save"
+    readonly property string screen_capture_command_full:           "~/.config/mango/scripts/satty.sh --full --save"
+    readonly property string screen_capture_command_clipboard:      "~/.config/mango/scripts/satty.sh --clipboard"
 
     // Wizard: Tarball Extraction
     readonly property string package_extraction_scan_directory:     "~/Downloads"
     readonly property string package_extraction_target_directory:   "~/.local/apps"
     readonly property bool package_extraction_delete_originals:     false
+
+    // System settings
+    readonly property string system_wallpaper_path:                 "~/.config/mango/assets/gardens-interactive-statues.jpg"
 }
