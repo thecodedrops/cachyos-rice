@@ -16,8 +16,6 @@ import qs.Views.Battery
 ShellRoot {
     id: shell
 
-    Component.onCompleted: Quickshell.env("")
-
     IpcHandler {
         target: "console"
         function toggle() {
