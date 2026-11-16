@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# TARGET_BINARY="${1:-/path/to/your/app}"
-TARGET_BINARY="${1:-$HOME/.local/apps/hyprfm/0.7.0/AppRun}"
+TARGET_BINARY="$HOME/.local/apps/hyprfm/0.7.0/AppRun"
 
 ALLOWED_DIRS=(
   ".config"
@@ -42,8 +41,9 @@ BWRAP_ARGS+=(
   --setenv DISPLAY "$DISPLAY"
   --setenv WAYLAND_DISPLAY "$WAYLAND_DISPLAY"
   --setenv XDG_RUNTIME_DIR "/run/user/$(id -u)"
-  --ro-bind /run/udev /run/udev \
+  --ro-bind /run/udev /run/udev
   --bind /run/dbus/system_bus_socket /run/dbus/system_bus_socket
 )
 
-exec bwrap "${BWRAP_ARGS[@]}" "$TARGET_BINARY"
+# Pass all script arguments ("$@") directly to hyprfm
+exec bwrap "${BWRAP_ARGS[@]}" "$TARGET_BINARY" "$@"

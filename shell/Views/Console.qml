@@ -125,7 +125,7 @@ StyledBox {
             }
 
             PowerControl {
-                iconname: "Key.svg"
+                iconname: "Lock.svg"
                 onClicked: EventOrchestrator.lockDevice()
             }
         }
