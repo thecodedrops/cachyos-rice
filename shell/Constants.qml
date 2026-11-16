@@ -262,5 +262,5 @@ Singleton {
     readonly property bool package_extraction_delete_originals:     false
 
     // System settings
-    readonly property string system_wallpaper_path:                 "~/.config/mango/assets/gardens-interactive-statues.jpg"
+    readonly property string system_wallpaper_path:                 "/media/storage/Pictures/Mirror World - Neutral Zone - Resting Place.jpg"
 }

@@ -13,9 +13,7 @@ import qs.Components
 // qmllint disable
 PanelWindow {
 // qmllint enable
-
     id: root
-    screen: root.screen
 
     anchors.top: true
     anchors.left: true
@@ -24,7 +22,7 @@ PanelWindow {
     implicitWidth: layout.width + (Constants.padding * 16)
 
     // Place the window on the background layer (behind normal windows)
-    WlrLayershell.layer: WlrLayer.Background
+    WlrLayershell.layer: WlrLayer.Bottom
     
     // Ensure it doesn't reserve space or interfere with window managers
     exclusionMode: ExclusionMode.Ignore

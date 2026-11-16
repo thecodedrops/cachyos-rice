@@ -9,6 +9,7 @@ import Quickshell.Wayland
 import Quickshell.Services.Polkit
 import Quickshell.Services.UPower
 
+import qs
 import qs.Widgets
 import qs.Layouts
 import qs.Services
@@ -18,6 +19,12 @@ import qs.Views.Battery
 
 ShellRoot {
     id: shell
+
+    Process {
+        id: _ProcessWallpaperProvider
+        running: true
+        command: [ "swaybg", "-i", Debug.uri(Constants.system_wallpaper_path), "-m", "fill" ]
+    }
 
     IpcHandler {
         target: "console"
@@ -31,6 +38,10 @@ ShellRoot {
 
         function screencapture() {
             EventOrchestrator.osdTriggerEvent(EventOrchestrator._SCREEN_CAPTURE_EVENT, true, null);
+        }
+
+        function lock() {
+            lock.locked = true
         }
     }
 
@@ -133,12 +144,6 @@ ShellRoot {
                 if (agent.isActive) EventOrchestrator.polkitEvent(agent)
             }
         }
-
-        Process {
-            id: _ProcessWallpaperProvider
-            running: true
-            command: [ "swaybg", "-i", Debug.uri(Constants.system_wallpaper_path), "-m", "fill" ]
-        }
     }
 
     BatteryMonitor { device: UPower.displayDevice }
@@ -161,5 +166,4 @@ ShellRoot {
 
         LockSurface { context: lockContext }
 	}
-
 }

@@ -308,12 +308,6 @@ if confirm ":: Do you want to setup Docker?"; then
     sudo systemctl enable --now docker.service >> "$LOG_FILE" 2>&1
     log "${GREEN}:: Done. You will need to reboot (or log out and back in).${NC}"
 fi
-
-if confirm ":: Do you want to install Thunar (file manager)?"; then
-    log "${YELLOW}:: Installing Thunar, Thunar Volume Manager and GVFS...${NC}"
-    install_pacman "thunar" "thunar-volman" "gvfs"
-    log "${GREEN}:: Done.${NC}"
-fi
  
 echo ""
 log "${GRAY}Logs saved to ${LOG_FILE}.${NC}"
