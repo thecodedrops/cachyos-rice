@@ -37,6 +37,7 @@ done
 BWRAP_ARGS+=(
   --bind /media /media
   --bind /mnt /mnt
+  --bind /run/media /run/media
   --bind /run/user/$(id -u) /run/user/$(id -u)
   --setenv DISPLAY "$DISPLAY"
   --setenv WAYLAND_DISPLAY "$WAYLAND_DISPLAY"
