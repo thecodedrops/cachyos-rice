@@ -24,38 +24,44 @@ WlSessionLockSurface {
         anchors.fill: parent
         source: Debug.uri(Constants.system_wallpaper_path)
         fillMode: Image.PreserveAspectCrop
-
-        // Rectangle {
-        //     anchors.fill: parent
-        //     color: Constants.color_mantle
-        //     opacity: 0.50
-        // }
     }
 
-    Rectangle {
-        anchors.fill: parent
-        color: Constants.color_mantle
-        opacity: 0.5
+    ColumnLayout {
+        spacing: Constants.spacing
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.topMargin: (Constants.padding * 10)
+        anchors.leftMargin: (Constants.padding * 12)
 
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            shadowEnabled: true
-            blurMax: 15
-            shadowColor: Qt.alpha(Constants.color_mantle, 0.7)
+        StyledText {
+            Layout.alignment: Qt.AlignLeft
+            text: Qt.formatDateTime(Daemon.clock.date, "dddd, MMMM dd")
+            font.pixelSize: 36
+            color: Constants.color_light
+        }
+
+        StyledText {
+            Layout.alignment: Qt.AlignLeft
+            text: Qt.formatDateTime(Daemon.clock.date, "hh:mm")
+            font.pixelSize: 32;
+            color: Constants.color_light
         }
     }
 
-    Item {
+    ColumnLayout {
+        spacing: Constants.spacing
         anchors.fill: parent
 
-        RowLayout {
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.margins: Constants.padding * 4
+        Row {
+            Layout.fillWidth: true
+            Layout.margins: Constants.padding * 4
 
             spacing: Constants.spacing
 
             ClickableIcon {
+                anchors.top: parent.top
+                anchors.left: parent.left
+
                 visible: Debug._DEBUG_MODE_
                 iconname: "Key.svg"
                 size: Constants.icon_size
@@ -65,6 +71,9 @@ WlSessionLockSurface {
             }
 
             ClickableIcon {
+                anchors.top: parent.top
+                anchors.right: parent.right
+
                 iconname: "Power.svg"
                 size: Constants.icon_size
                 styles.icon_color_idle: Constants.color_subtext
@@ -73,16 +82,17 @@ WlSessionLockSurface {
             }
         }
 
+        Item { Layout.fillHeight: true }
+
         Column {
             spacing: Constants.spacing
 
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.margins: Constants.padding * 4
-            anchors.bottomMargin: 128
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+            Layout.margins: Constants.padding * 4
+            Layout.bottomMargin: 128
+            Layout.preferredHeight: Constants.size * 2
 
             width: 200
-            height: Constants.size * 2
 
             TextField {
                 id: _PasswordTextField
