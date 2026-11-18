@@ -248,6 +248,7 @@ create_symlink "themes/gtk/${GTK_THEME}/gtk-3.0" "$HOME/.config/gtk-3.0"
 create_symlink "themes/gtk/${GTK_THEME}/gtk-4.0" "$HOME/.config/gtk-4.0"
 create_symlink "themes/micro/${MICRO_THEME}.micro" "$HOME/.config/micro/colorschemes/${MICRO_THEME}.micro"
 create_symlink "themes/micro/settings.json" "$HOME/.config/micro/settings.json"
+create_symlink "xdg-desktop-portal/mango-portals.conf" "$HOME/.config/xdg-desktop-portal/mango-portals.conf"
 
 # ==============================================================================
 # Execution: System-wide Assets Copying (Sudo)
@@ -300,14 +301,14 @@ if confirm ":: Do you want to clean up redundant bash files?"; then
 	log "${GREEN}Done.${NC}"
 fi
 
-if confirm ":: Do you want to setup Docker?"; then
-    log "${YELLOW}:: Configuring Docker and Docker Compose...${NC}"
-    install_pacman "docker" "docker-compose"
-    getent group docker &>/dev/null || sudo groupadd docker
-    sudo usermod -aG docker $USER
-    sudo systemctl enable --now docker.service >> "$LOG_FILE" 2>&1
-    log "${GREEN}:: Done. You will need to reboot (or log out and back in).${NC}"
-fi
+# if confirm ":: Do you want to setup Docker?"; then
+#     log "${YELLOW}:: Configuring Docker and Docker Compose...${NC}"
+#     install_pacman "docker" "docker-compose"
+#     getent group docker &>/dev/null || sudo groupadd docker
+#     sudo usermod -aG docker $USER
+#     sudo systemctl enable --now docker.service >> "$LOG_FILE" 2>&1
+#     log "${GREEN}:: Done. You will need to reboot (or log out and back in).${NC}"
+# fi
  
 echo ""
 log "${GRAY}Logs saved to ${LOG_FILE}.${NC}"
