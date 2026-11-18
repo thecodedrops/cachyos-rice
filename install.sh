@@ -2,6 +2,27 @@
 set -euo pipefail
 
 # ==============================================================================
+# Parameter Parsing
+# ==============================================================================
+SKIP_GRUB=false
+
+for arg in "$@"; do
+    case "$arg" in
+        --skip-grub|-s)
+            SKIP_GRUB=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: $0 [OPTIONS]"
+            echo "Options:"
+            echo "  -s, --skip-grub    Skip GRUB theme setup, Plymouth configuration, and initcpio rebuild."
+            echo "  -h, --help         Display this help message."
+            exit 0
+            ;;
+    esac
+done
+
+# ==============================================================================
 # Environment & Configuration Setup
 # ==============================================================================
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,6 +56,9 @@ log() {
 }
 
 log "${BLUE}Starting Installation Script${NC}"
+if [ "$SKIP_GRUB" = true ]; then
+    log "${YELLOW}:: Flag detected: Skipping GRUB and Plymouth installation/configuration.${NC}"
+fi
 
 # ==============================================================================
 # Sudo Authentication & Keep-Alive Management
@@ -248,7 +272,7 @@ create_symlink "themes/gtk/${GTK_THEME}/gtk-3.0" "$HOME/.config/gtk-3.0"
 create_symlink "themes/gtk/${GTK_THEME}/gtk-4.0" "$HOME/.config/gtk-4.0"
 create_symlink "themes/micro/${MICRO_THEME}.micro" "$HOME/.config/micro/colorschemes/${MICRO_THEME}.micro"
 create_symlink "themes/micro/settings.json" "$HOME/.config/micro/settings.json"
-create_symlink "xdg-desktop-portal/mango-portals.conf" "$HOME/.config/xdg-desktop-portal/mango-portals.conf"
+create_symlink "xdg-desktop-portal" "$HOME/.config/xdg-desktop-portal"
 
 # ==============================================================================
 # Execution: System-wide Assets Copying (Sudo)
@@ -258,9 +282,14 @@ log "${BLUE}Installing System-Wide Assets (Privileged)${NC}"
 log "${BLUE}-------------------------------------------${NC}"
 
 copy_item_sudo "themes/xcursor/${XCURSOR_THEME}" "/usr/share/icons/${XCURSOR_THEME}"
-copy_item_sudo "themes/grub/${GRUB_THEME}" "/usr/share/grub/themes/${GRUB_THEME}"
-copy_item_sudo "themes/grub/grub" "/etc/default/grub"
-copy_item_sudo "themes/plymouth/${PLYMOUTH_THEME}" "/usr/share/plymouth/themes/${PLYMOUTH_THEME}"
+
+if [ "$SKIP_GRUB" = false ]; then
+    copy_item_sudo "themes/grub/${GRUB_THEME}" "/usr/share/grub/themes/${GRUB_THEME}"
+    copy_item_sudo "themes/grub/grub" "/etc/default/grub"
+    copy_item_sudo "themes/plymouth/${PLYMOUTH_THEME}" "/usr/share/plymouth/themes/${PLYMOUTH_THEME}"
+else
+    log "${GRAY}:: Skipping GRUB and Plymouth asset copying (--skip-grub active).${NC}"
+fi
 
 # ==============================================================================
 # Execution: System configurations (Sometimes sudo)
@@ -281,16 +310,23 @@ log "${GRAY}:: Skipped GTK setup...${NC}"
 # ==============================================================================
 # Execution: System configurations (Sometimes sudo)
 # ==============================================================================
-echo ""
-log "${BLUE}Configuring GRUB and Plymouth (Privileged)${NC}"
-log "${BLUE}-------------------------------------------${NC}"
-log "${GRAY}This may take a few minutes (at most).${NC}"
+if [ "$SKIP_GRUB" = false ]; then
+    echo ""
+    log "${BLUE}Configuring GRUB and Plymouth (Privileged)${NC}"
+    log "${BLUE}-------------------------------------------${NC}"
+    log "${GRAY}This may take a few minutes (at most).${NC}"
 
-sudo grub-mkconfig -o /boot/grub/grub.cfg >> "$LOG_FILE" 2>&1
-sudo plymouth-set-default-theme -R cross-hud >> "$LOG_FILE" 2>&1
-sudo mkinitcpio -P >> "$LOG_FILE" 2>&1
-log "${GREEN}:: Grub theme set to [${GRUB_THEME}]${NC}"
-log "${GREEN}:: Plymouth theme set to [${PLYMOUTH_THEME}]${NC}"
+    sudo grub-mkconfig -o /boot/grub/grub.cfg >> "$LOG_FILE" 2>&1
+    sudo plymouth-set-default-theme -R cross-hud >> "$LOG_FILE" 2>&1
+    sudo mkinitcpio -P >> "$LOG_FILE" 2>&1
+    log "${GREEN}:: Grub theme set to [${GRUB_THEME}]${NC}"
+    log "${GREEN}:: Plymouth theme set to [${PLYMOUTH_THEME}]${NC}"
+else
+    echo ""
+    log "${BLUE}Configuring GRUB and Plymouth (Privileged)${NC}"
+    log "${BLUE}-------------------------------------------${NC}"
+    log "${GRAY}:: Skipped GRUB configuration, Plymouth theme update, and mkinitcpio rebuilding (--skip-grub active).${NC}"
+fi
 
 echo ""
 log "${BLUE}Installation Completed Successfully${NC}"
