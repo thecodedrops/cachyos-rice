@@ -27,8 +27,9 @@ done
 # Environment & Configuration Setup
 # ==============================================================================
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGE_DIR="./Packages"
-THEMES_DIR="./Themes"
+PACKAGE_DIR="$SCRIPT_DIR/Packages"
+THEMES_DIR="$SCRIPT_DIR/Themes"
+
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 LOG_FILE="${SCRIPT_DIR}/${TIMESTAMP}.log"
 
@@ -321,7 +322,7 @@ if [ "$SKIP_GRUB" = false ]; then
     log "${GRAY}GRUB has been configured.${NC}"
     
     sudo plymouth-set-default-theme -R cross-hud >> "$LOG_FILE" 2>&1
-    log "${GRAY}Plymouth theme has been configured."
+    log "${GRAY}Plymouth theme has been configured.${NC}"
     
     log "${GRAY}Making initial copy in/out...${NC}"
     sudo mkinitcpio -P >> "$LOG_FILE" 2>&1
@@ -336,7 +337,7 @@ fi
 
 if confirm ":: Do you want to clean up redundant bash files?"; then
 	log "${YELLOW}:: Deleting all files starting with [.bash] from [${HOME}]${NC}"
-	rm $HOME/.bash*
+	rm -f "$HOME/.bash"*
 	log "${GREEN}Done.${NC}"
 fi
 
