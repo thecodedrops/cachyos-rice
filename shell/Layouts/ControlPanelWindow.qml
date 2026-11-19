@@ -28,7 +28,7 @@ PanelWindow {
     exclusionMode: ExclusionMode.Ignore
 
     WlrLayershell.namespace: Constants.namespace
-    WlrLayershell.layer: WlrLayer.Top
+    WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
     readonly property color backdrop_color: (expanded) ? Constants.console_color_backdrop_active : Constants.console_color_backdrop_inactive
@@ -48,6 +48,8 @@ PanelWindow {
         id: centerconsole
         anchors.centerIn: parent
         implicitWidth: Constants.console_width
+
+        screen: container.screen
         
         Keys.onEscapePressed: EventOrchestrator.consoleDismissContentEvent();
 
@@ -68,13 +70,6 @@ PanelWindow {
                     }
                 }
             }
-        }
-
-        Behavior on implicitHeight { 
-            NumberAnimation { 
-                duration: Constants.animation_duration / 2
-                easing.type: Easing.Linear 
-            } 
         }
 
         TapHandler {

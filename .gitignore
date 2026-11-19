@@ -86,3 +86,6 @@ compile_commands.json
 *.ignore
 *.ignore.*
 .qmlls.ini
+*.log
+/themes/gtk/**/settings.ini
+/themes/gtk/**/bookmarks
