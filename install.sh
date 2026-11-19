@@ -2,6 +2,34 @@
 set -euo pipefail
 
 # ==============================================================================
+# Environment & Configuration Setup
+# ==============================================================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TIMESTAMP="$(date +%Y%m%d%H%M%S)"
+LOG_FILE="${SCRIPT_DIR}/${TIMESTAMP}.log"
+
+# Colors for terminal output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+GRAY='\033[0;90m'
+NC='\033[0m' # No Color
+
+# Logging function (outputs to stdout with colors and appends plain text to log)
+log() {
+    local message="$1"
+    local plain_message
+    plain_message="$(echo -e "$message" | sed -r "s/\x1b\[[0-9;]*m//g")"
+    echo -e "$message"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - $plain_message" >> "$LOG_FILE"
+}
+
+log "${RED}Installation is currently broken. A fix will come soon.${NC}";
+exit -1
+
+# ==============================================================================
 # Parameter Parsing
 # ==============================================================================
 SKIP_GRUB=false
@@ -22,22 +50,6 @@ for arg in "$@"; do
     esac
 done
 
-# ==============================================================================
-# Environment & Configuration Setup
-# ==============================================================================
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TIMESTAMP="$(date +%Y%m%d%H%M%S)"
-LOG_FILE="${SCRIPT_DIR}/${TIMESTAMP}.log"
-
-# Colors for terminal output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-CYAN='\033[0;36m'
-GRAY='\033[0;90m'
-NC='\033[0m' # No Color
-
 # Script variables
 PLYMOUTH_THEME='cross-hud'
 XCURSOR_THEME='BibataModernIce'
@@ -45,15 +57,6 @@ GRUB_THEME='catppuccin'
 GTK_THEME='catppuccin-mocha-mauve'
 GTK_MODE='prefer-dark'
 MICRO_THEME='catppuccin'
-
-# Logging function (outputs to stdout with colors and appends plain text to log)
-log() {
-    local message="$1"
-    local plain_message
-    plain_message="$(echo -e "$message" | sed -r "s/\x1b\[[0-9;]*m//g")"
-    echo -e "$message"
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $plain_message" >> "$LOG_FILE"
-}
 
 log "${BLUE}Starting Installation Script${NC}"
 if [ "$SKIP_GRUB" = true ]; then
