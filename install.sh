@@ -2,11 +2,38 @@
 set -euo pipefail
 
 # ==============================================================================
+# Parse arguments and parameters
+# ==============================================================================
+SKIP_GRUB=false
+
+for arg in "$@"; do
+    case "$arg" in
+        --skip-grub|-s)
+            SKIP_GRUB=true
+            shift
+            ;;
+        --help|-h)
+            echo "Usage: $0 [OPTIONS]"
+            echo "Options:"
+            echo "  -s, --skip-grub    Skip GRUB theme setup, Plymouth configuration, and initcpio rebuild."
+            echo "  -h, --help         Display this help message."
+            exit 0
+            ;;
+    esac
+done
+
+
+# ==============================================================================
 # Environment & Configuration Setup
 # ==============================================================================
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE_DIR="./Packages"
+THEMES_DIR="./Themes"
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
 LOG_FILE="${SCRIPT_DIR}/${TIMESTAMP}.log"
+
+BACKUP_DATE="$(date +%Y%m%d%H%M%S)"
+BACKUP_DIR="$HOME/.config/.backup/$BACKUP_DATE"
 
 # Colors for terminal output
 RED='\033[0;31m'
@@ -30,27 +57,8 @@ log "${RED}Installation is currently broken. A fix will come soon.${NC}";
 exit -1
 
 # ==============================================================================
-# Parameter Parsing
+# Setup default parameters
 # ==============================================================================
-SKIP_GRUB=false
-
-for arg in "$@"; do
-    case "$arg" in
-        --skip-grub|-s)
-            SKIP_GRUB=true
-            shift
-            ;;
-        --help|-h)
-            echo "Usage: $0 [OPTIONS]"
-            echo "Options:"
-            echo "  -s, --skip-grub    Skip GRUB theme setup, Plymouth configuration, and initcpio rebuild."
-            echo "  -h, --help         Display this help message."
-            exit 0
-            ;;
-    esac
-done
-
-# Script variables
 PLYMOUTH_THEME='cross-hud'
 XCURSOR_THEME='BibataModernIce'
 GRUB_THEME='catppuccin'
@@ -60,13 +68,13 @@ MICRO_THEME='catppuccin'
 
 log "${BLUE}Starting Installation Script${NC}"
 if [ "$SKIP_GRUB" = true ]; then
-    log "${YELLOW}:: Flag detected: Skipping GRUB and Plymouth installation/configuration.${NC}"
+    log "${GRAY}:: GRUB and Plymouth configuration will be skipped.${NC}"
 fi
 
 # ==============================================================================
 # Sudo Authentication & Keep-Alive Management
 # ==============================================================================
-log "${YELLOW}:: Requesting sudo privileges...${NC}"
+log "${RED}:: Requesting sudo privileges...${NC}"
 sudo -v
 
 # Keep sudo ticket alive in the background for the duration of execution
@@ -77,12 +85,6 @@ while true; do
 done 2>/dev/null &
 SUDO_KEEPALIVE_PID=$!
 trap 'kill "$SUDO_KEEPALIVE_PID" 2>/dev/null || true' EXIT
-
-# ==============================================================================
-# Backup Infrastructure Setup
-# ==============================================================================
-BACKUP_DATE="$(date +%Y%m%d%H%M%S)"
-BACKUP_DIR="$HOME/.config/.backup/$BACKUP_DATE"
 
 handle_conflict() {
     local target="$1"
@@ -247,7 +249,6 @@ install_pacman \
     "foot" \
     "starship" \
     "swaybg" \
-    "swayidle" \
     "wlr-randr" \
     "brightnessctl" \
     "gnome-keyring" \
@@ -262,20 +263,21 @@ install_pacman \
 echo ""
 log "${BLUE}Configuring system assets (Privileged)${NC}"
 log "${BLUE}-------------------------------------------${NC}"
-create_symlink "fastfetch" "$HOME/.config/fastfetch"
-create_symlink "foot" "$HOME/.config/foot"
-create_symlink "mango" "$HOME/.config/mango"
-create_symlink "mpv" "$HOME/.config/mpv"
-create_symlink "shell" "$HOME/.config/quickshell"
-create_symlink "zsh" "$HOME/.config/zsh"
-create_symlink "zsh/.zprofile" "$HOME/.zprofile"
-create_symlink "themes/starship/starship.toml" "$HOME/.config/starship.toml"
-create_symlink "themes/gtk/${GTK_THEME}" "$HOME/.local/share/themes/${GTK_THEME}"
-create_symlink "themes/gtk/${GTK_THEME}/gtk-3.0" "$HOME/.config/gtk-3.0"
-create_symlink "themes/gtk/${GTK_THEME}/gtk-4.0" "$HOME/.config/gtk-4.0"
-create_symlink "themes/micro/${MICRO_THEME}.micro" "$HOME/.config/micro/colorschemes/${MICRO_THEME}.micro"
-create_symlink "themes/micro/settings.json" "$HOME/.config/micro/settings.json"
-create_symlink "xdg-desktop-portal" "$HOME/.config/xdg-desktop-portal"
+create_symlink "$PACKAGE_DIR/fastfetch" "$HOME/.config/fastfetch"
+create_symlink "$PACKAGE_DIR/foot" "$HOME/.config/foot"
+create_symlink "$PACKAGE_DIR/mango" "$HOME/.config/mango"
+create_symlink "$PACKAGE_DIR/mpv" "$HOME/.config/mpv"
+create_symlink "$PACKAGE_DIR/shell" "$HOME/.config/quickshell"
+create_symlink "$PACKAGE_DIR/zsh" "$HOME/.config/zsh"
+create_symlink "$PACKAGE_DIR/zsh/.zprofile" "$HOME/.zprofile"
+create_symlink "$PACKAGE_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
+create_symlink "$PACKAGE_DIR/xdg-desktop-portal" "$HOME/.config/xdg-desktop-portal"
+
+create_symlink "$THEMES_DIR/gtk/${GTK_THEME}" "$HOME/.local/share/themes/${GTK_THEME}"
+create_symlink "$THEMES_DIR/gtk/${GTK_THEME}/gtk-3.0" "$HOME/.config/gtk-3.0"
+create_symlink "$THEMES_DIR/gtk/${GTK_THEME}/gtk-4.0" "$HOME/.config/gtk-4.0"
+create_symlink "$THEMES_DIR/micro/${MICRO_THEME}.micro" "$HOME/.config/micro/colorschemes/${MICRO_THEME}.micro"
+create_symlink "$THEMES_DIR/micro/settings.json" "$HOME/.config/micro/settings.json"
 
 # ==============================================================================
 # Execution: System-wide Assets Copying (Sudo)
@@ -284,15 +286,7 @@ echo ""
 log "${BLUE}Installing System-Wide Assets (Privileged)${NC}"
 log "${BLUE}-------------------------------------------${NC}"
 
-copy_item_sudo "themes/xcursor/${XCURSOR_THEME}" "/usr/share/icons/${XCURSOR_THEME}"
-
-if [ "$SKIP_GRUB" = false ]; then
-    copy_item_sudo "themes/grub/${GRUB_THEME}" "/usr/share/grub/themes/${GRUB_THEME}"
-    copy_item_sudo "themes/grub/grub" "/etc/default/grub"
-    copy_item_sudo "themes/plymouth/${PLYMOUTH_THEME}" "/usr/share/plymouth/themes/${PLYMOUTH_THEME}"
-else
-    log "${GRAY}:: Skipping GRUB and Plymouth asset copying (--skip-grub active).${NC}"
-fi
+copy_item_sudo "$THEMES_DIR/xcursor/${XCURSOR_THEME}" "/usr/share/icons/${XCURSOR_THEME}"
 
 # ==============================================================================
 # Execution: System configurations (Sometimes sudo)
@@ -317,22 +311,28 @@ if [ "$SKIP_GRUB" = false ]; then
     echo ""
     log "${BLUE}Configuring GRUB and Plymouth (Privileged)${NC}"
     log "${BLUE}-------------------------------------------${NC}"
-    log "${GRAY}This may take a few minutes (at most).${NC}"
+    log "${GRAY}This may take a few minutes.${NC}"
+
+    copy_item_sudo "$THEMES_DIR/grub/${GRUB_THEME}" "/usr/share/grub/themes/${GRUB_THEME}"
+    copy_item_sudo "$THEMES_DIR/grub/grub" "/etc/default/grub"
+    copy_item_sudo "$THEMES_DIR/plymouth/${PLYMOUTH_THEME}" "/usr/share/plymouth/themes/${PLYMOUTH_THEME}"
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg >> "$LOG_FILE" 2>&1
+    log "${GRAY}GRUB has been configured.${NC}"
+    
     sudo plymouth-set-default-theme -R cross-hud >> "$LOG_FILE" 2>&1
+    log "${GRAY}Plymouth theme has been configured."
+    
+    log "${GRAY}Making initial copy in/out...${NC}"
     sudo mkinitcpio -P >> "$LOG_FILE" 2>&1
-    log "${GREEN}:: Grub theme set to [${GRUB_THEME}]${NC}"
+    log "${GRAY}Completed.${NC}"
+    
+    log "${GREEN}:: GRUB theme set to [${GRUB_THEME}]${NC}"
     log "${GREEN}:: Plymouth theme set to [${PLYMOUTH_THEME}]${NC}"
 else
     echo ""
-    log "${BLUE}Configuring GRUB and Plymouth (Privileged)${NC}"
-    log "${BLUE}-------------------------------------------${NC}"
-    log "${GRAY}:: Skipped GRUB configuration, Plymouth theme update, and mkinitcpio rebuilding (--skip-grub active).${NC}"
+    log "${GRAY}:: Skipped GRUB and Plymouth setup.${NC}"
 fi
-
-echo ""
-log "${BLUE}Installation Completed Successfully${NC}"
 
 if confirm ":: Do you want to clean up redundant bash files?"; then
 	log "${YELLOW}:: Deleting all files starting with [.bash] from [${HOME}]${NC}"
@@ -340,19 +340,15 @@ if confirm ":: Do you want to clean up redundant bash files?"; then
 	log "${GREEN}Done.${NC}"
 fi
 
-# if confirm ":: Do you want to setup Docker?"; then
-#     log "${YELLOW}:: Configuring Docker and Docker Compose...${NC}"
-#     install_pacman "docker" "docker-compose"
-#     getent group docker &>/dev/null || sudo groupadd docker
-#     sudo usermod -aG docker $USER
-#     sudo systemctl enable --now docker.service >> "$LOG_FILE" 2>&1
-#     log "${GREEN}:: Done. You will need to reboot (or log out and back in).${NC}"
-# fi
+echo ""
+log "${BLUE}Installation Completed Successfully${NC}"
  
 echo ""
 log "${GRAY}Logs saved to ${LOG_FILE}.${NC}"
 log "${GRAY}Backups saved to ${BACKUP_DIR}.${NC}"
 
+    log "${BLUE}===========================================${NC}"
+    
 if confirm ":: Do you want to reboot now?"; then
     echo ""
     sudo reboot
