@@ -5,7 +5,7 @@ import Quickshell.Wayland
 import qs
 import qs.Components
 
-ClickableWithIcon {
+ClickableIcon {
     required property IdleInhibitor inhibitor
     active: inhibitor.enabled || anim_rotation.running
 

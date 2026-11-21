@@ -60,7 +60,7 @@ ColumnLayout {
         }
 
         // Power Toggle Button
-        ClickableWithIcon {
+        ClickableIcon {
             readonly property color accent: Constants.network_color_active
 
             implicitHeight: Constants.size - (Constants.padding / 2)
@@ -260,7 +260,7 @@ ColumnLayout {
                                     visible: _NetworkItem.channel.length > 0
                                 }
 
-                                ClickableWithIcon {
+                                ClickableIcon {
                                     size: Constants.font_size_lg
                                     padding: 0
 
@@ -296,7 +296,7 @@ ColumnLayout {
                                     color: Constants.network_color_ink_muted
                                 }
 
-                                ClickableWithIcon {
+                                ClickableIcon {
                                     size: Constants.icon_size * 1.5
                                     padding: 0
 
@@ -344,7 +344,7 @@ ColumnLayout {
                                     }
                                 }
 
-                                ClickableWithIcon {
+                                ClickableIcon {
                                     readonly property color accent: Constants.network_color_critical
 
                                     size: (Constants.icon_size * 1.5) - (padding * 2)

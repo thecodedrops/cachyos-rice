@@ -66,7 +66,6 @@ StyledBox {
                 Layout.fillWidth: true
                 spacing: Constants.spacing
 
-                // Static icon using ClickableWithIcon
                 IconControl {
                     size: Constants.size - Constants.padding * 2
                     source: item.modelData.connected ? "Desktop-On.svg" : "Desktop-Off.svg"

@@ -5,7 +5,7 @@ import QtQuick
 import qs
 import qs.Components
 
-ClickableWithIcon {    
+ClickableIcon {    
     size: Constants.icon_size 
     padding: Constants.padding
     radius: (active) ? Constants.radius_active : Constants.radius

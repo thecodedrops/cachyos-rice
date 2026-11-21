@@ -36,12 +36,11 @@ Rectangle {
 
         Timer { id: changeCooldown; running: false; interval: 1000 }
 
-        ClickableWithIcon {
-            id: brightnessIcon
+        IconControl {
+            // size: Constants.size - Constants.padding * 2
             size: Constants.toast_icon_size
-            iconname: "Sun.svg"
-            styles.icon_color_idle: Constants.display_control_color_ink_default
-            styles.icon_color_active: Constants.display_control_color_active
+            source: "Sun.svg"
+            tint: Constants.display_control_color_ink_default
         }
         
         StyledSlider {

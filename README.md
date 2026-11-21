@@ -57,6 +57,11 @@ The shell launches many processes - some of which stay alive in the background (
 Too many files now provide for button component: `Clickable`, `ClickableWithIcon`, `ClickableIcon`, `ClickableButton`.
 
 **Goal**: Clean up redundant button components, using only some generic versions.
-- [ ] `Clickable`: Provides click interactions on non-standard components.
-- [ ] `ClickableIcon`: Provides a button with a single icon (no label).
+- [x] `Clickable`: Provides click interactions on non-standard components.
+  - [x] Replace `ClickableWithIcon` where applicable.
+  - [x] Replace boilerplate mouse wrappers where applicable.
+- [x] `ClickableIcon`: Provides a button with a single icon (no label).
+  - [x] Replace `ClickableWithIcon` where applicable.
 - [ ] `ClickableButton`: Provides a stylized button with icon (optional) and label.
+  - [ ] Remove dependency on `ClickableWithIcon`.
+  - [ ] Replace `ClickableWithIcon` where applicable.

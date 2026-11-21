@@ -135,11 +135,11 @@ ColumnLayout {
                 tint: Qt.alpha(Constants.spotlight_color_ink_muted, (_SearchTextField.activeFocus) ? 0.60: 0.20)
             }
 
-            ClickableWithIcon {
+            ClickableIcon {
                 size: Constants.spotlight_icon_size
-                padding: _SearchTextField._padding
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: _SearchTextField._padding
                 iconname: root.showHiddenApps ? "Eye.svg" : "Eye-Off.svg"
                 styles.icon_color_idle: Constants.spotlight_color_ink_muted
                 styles.icon_color_active: Constants.spotlight_color_ink_active

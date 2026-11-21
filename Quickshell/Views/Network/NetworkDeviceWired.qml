@@ -119,7 +119,7 @@ ColumnLayout {
                             spacing: Constants.spacing
                             Layout.fillHeight: true
 
-                            ClickableWithIcon {
+                            ClickableIcon {
                                 size: Constants.font_size_lg
                                 padding: 0
 

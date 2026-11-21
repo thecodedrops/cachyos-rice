@@ -36,7 +36,7 @@ Rectangle {
 
         Timer { id: changeCooldown; running: false; interval: 1000 }
 
-        ClickableWithIcon {
+        ClickableIcon {
             id: mutetoggle
             size: Constants.toast_icon_size
             iconname: {

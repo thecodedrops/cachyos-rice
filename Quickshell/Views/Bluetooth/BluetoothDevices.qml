@@ -32,6 +32,7 @@ ColumnLayout {
         BarControl {
             Layout.fillWidth: true
             Layout.fillHeight: true
+            Layout.maximumHeight: Constants.size
             Layout.topMargin: 4
             Layout.bottomMargin: 4
 
@@ -47,7 +48,8 @@ ColumnLayout {
 
         ClickableButton {
             implicitWidth: 108
-            Layout.maximumHeight: parent.height
+            implicitHeight: Constants.size - (Constants.padding / 2)
+
             enabled: root.adapter.enabled
             colors.accent: (root.adapter.discovering) ? Constants.bluetooth_color_critical : Constants.bluetooth_color_active
             colors.muted: Constants.bluetooth_color_inactive
@@ -61,7 +63,7 @@ ColumnLayout {
         }
 
         // Power Toggle Button
-        ClickableWithIcon {
+        ClickableIcon {
             implicitHeight: Constants.size - (Constants.padding / 2)
             implicitWidth: Constants.size - (Constants.padding / 2)
             
@@ -215,7 +217,7 @@ ColumnLayout {
 
                         readonly property color muted: Qt.alpha(Constants.bluetooth_color_ink_muted, 0.5)
 
-                        ClickableWithIcon {
+                        ClickableIcon {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -232,7 +234,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.blocked = !_DeviceItem.modelData.blocked
                         }
 
-                        ClickableWithIcon {
+                        ClickableIcon {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -249,7 +251,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.wakeAllowed = !_DeviceItem.modelData.wakeAllowed
                         }
 
-                        ClickableWithIcon {
+                        ClickableIcon {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -266,7 +268,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.trusted = !_DeviceItem.modelData.trusted
                         }
 
-                        ClickableWithIcon {
+                        ClickableIcon {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -355,7 +357,7 @@ ColumnLayout {
                             }
                         }
 
-                        ClickableWithIcon {
+                        ClickableIcon {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
                             padding: Constants.padding / 1.5
