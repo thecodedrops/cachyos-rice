@@ -115,7 +115,7 @@ import qs.Components
 //     }
 // }
 
-ClickableButton {
+ClickableWithAccent {
     id: root
 
     readonly property var device: UPower.displayDevice
@@ -159,21 +159,14 @@ ClickableButton {
     leftPadding: Constants.padding
     rightPadding: Constants.padding
 
-    styles.background_color_idle: Constants.control_color_background_default
-    styles.background_color_active: datamap.accent
-    styles.icon_color_idle: datamap.accent
-    styles.icon_color_active: Constants.battery_color_ink_active
-
-    styles.border_width: 1
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: datamap.accent
-
-    styles.text_color_idle: datamap.accent
-    styles.text_color_active: Constants.battery_color_ink_active
-
     font.family: Constants.font_family
     text: Math.floor(root.batterypercentage * 100) + "%"
     iconname: datamap.icon
+    
+    colors.accent: datamap.accent
+
+    styles.border_color_idle: Constants.control_color_border_default
+    styles.background_color_idle: Constants.control_color_background_default
 
     radius: (active) ? Constants.radius_active : Constants.radius
     Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }

@@ -7,7 +7,7 @@ import Quickshell.Bluetooth
 import qs
 import qs.Components
 
-ClickableButton {
+ClickableWithAccent {
     id: root
 
     // qmllint disable
@@ -21,7 +21,7 @@ ClickableButton {
     }
 
     QtObject {
-        id: states
+        id: _States
         property DatamapModel enabling: DatamapModel {
             icon: "Bluetooth-On.svg"
             accent: Constants.bluetooth_color_busy
@@ -49,15 +49,15 @@ ClickableButton {
     }
 
     property DatamapModel statemap: switch (adapter.state ?? BluetoothAdapterState.Blocked) {
-        case BluetoothAdapterState.Enabling: return states.enabling;
-        case BluetoothAdapterState.Disabling: return states.disabling;
-        case BluetoothAdapterState.Disabled: return states.disabled;
-        case BluetoothAdapterState.Enabled: return states.enabled;
-        case BluetoothAdapterState.Blocked: return states.blocked;
-        default: return states.unknown;
+        case BluetoothAdapterState.Enabling: return _States.enabling;
+        case BluetoothAdapterState.Disabling: return _States.disabling;
+        case BluetoothAdapterState.Disabled: return _States.disabled;
+        case BluetoothAdapterState.Enabled: return _States.enabled;
+        case BluetoothAdapterState.Blocked: return _States.blocked;
+        default: return _States.unknown;
     }
 
-    property DatamapModel datamap: statemap ?? states.unknown
+    property DatamapModel datamap: statemap ?? _States.unknown
 
     size: Constants.icon_size
 
@@ -65,18 +65,10 @@ ClickableButton {
     rightPadding: (text.length > 0) ? Constants.padding * 1.25 : Constants.padding
 
     iconname: datamap.icon
-    styles.background_color_idle: Constants.control_color_background_default
-    styles.background_color_active: datamap.accent
+    colors.accent: datamap.accent
 
-    styles.icon_color_idle: datamap.accent
-    styles.icon_color_active: Constants.bluetooth_color_ink_active
-
-    styles.border_width: 1
     styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: datamap.accent
-
-    styles.text_color_idle: datamap.accent
-    styles.text_color_active: Constants.bluetooth_color_ink_active
+    styles.background_color_idle: Constants.control_color_background_default
 
     font.family: Constants.font_family
 

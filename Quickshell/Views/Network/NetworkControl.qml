@@ -8,7 +8,7 @@ import qs
 import qs.Services
 import qs.Components
 
-ClickableButton {
+ClickableWithAccent {
     id: root
 
     component DatamapModel: QtObject {
@@ -89,17 +89,10 @@ ClickableButton {
     rightPadding: (text.length > 0) ? Constants.padding * 1.25 : Constants.padding
     iconname: datamap.icon
 
-    styles.background_color_idle: Constants.control_color_background_default
-    styles.background_color_active: datamap.accent
-    styles.icon_color_idle: datamap.accent
-    styles.icon_color_active: Constants.network_color_ink_active
+    colors.accent: datamap.accent
 
-    styles.border_width: 1
     styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: datamap.accent
-
-    styles.text_color_idle: datamap.accent
-    styles.text_color_active: Constants.network_color_ink_active
+    styles.background_color_idle: Constants.control_color_background_default
 
     font.family: Constants.font_family
     text: Constants.network_control_hide_ssid ? "" : datamap?.label ?? ""
