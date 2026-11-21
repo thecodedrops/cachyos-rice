@@ -58,7 +58,7 @@ WlSessionLockSurface {
 
             spacing: Constants.spacing
 
-            ClickableIcon {
+            ClickableButton {
                 anchors.top: parent.top
                 anchors.left: parent.left
 
@@ -70,7 +70,7 @@ WlSessionLockSurface {
                 onClicked: if (Debug._DEBUG_MODE_) root.context.unlocked()
             }
 
-            ClickableIcon {
+            ClickableButton {
                 anchors.top: parent.top
                 anchors.right: parent.right
 

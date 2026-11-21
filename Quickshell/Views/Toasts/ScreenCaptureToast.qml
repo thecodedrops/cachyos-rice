@@ -66,7 +66,7 @@ StyledBox {
 
         Repeater {
             model: control.options
-            delegate: ClickableIcon {
+            delegate: ClickableButton {
                 required property string vector
                 required property var command
                 required property bool disabled

@@ -7,7 +7,7 @@ import Quickshell.Bluetooth
 import qs
 import qs.Components
 
-ClickableWithIcon {
+ClickableButton {
     id: root
 
     // qmllint disable

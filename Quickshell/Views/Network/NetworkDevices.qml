@@ -27,7 +27,7 @@ ColumnLayout {
 
         Item { Layout.fillWidth: true }
 
-        ClickableIcon {
+        ClickableButton {
             Layout.alignment: Qt.AlignVCenter
             padding: 0
             size: Constants.icon_size

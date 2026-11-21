@@ -60,8 +60,7 @@ Too many files now provide for button component: `Clickable`, `ClickableWithIcon
 - [x] `Clickable`: Provides click interactions on non-standard components.
   - [x] Replace `ClickableWithIcon` where applicable.
   - [x] Replace boilerplate mouse wrappers where applicable.
-- [x] `ClickableIcon`: Provides a button with a single icon (no label).
+- [x] `ClickableButton`: Provides a base button with a icon and label.
   - [x] Replace `ClickableWithIcon` where applicable.
-- [ ] `ClickableButton`: Provides a stylized button with icon (optional) and label.
-  - [ ] Remove dependency on `ClickableWithIcon`.
-  - [ ] Replace `ClickableWithIcon` where applicable.
+- [x] `ClickableWithAccent`: Provides a stylized button heavily using an accent color.
+  - [x] Replace `ClickableWithIcon` where applicable.

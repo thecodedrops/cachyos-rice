@@ -8,7 +8,7 @@ import qs
 import qs.Services
 import qs.Components
 
-ClickableWithIcon {
+ClickableButton {
     id: root
 
     component DatamapModel: QtObject {

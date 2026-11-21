@@ -43,7 +43,7 @@ ColumnLayout {
         }
 
 
-        ClickableButton {
+        ClickableWithAccent {
             implicitWidth: 120
             implicitHeight: Constants.size - (Constants.padding / 2)
             
@@ -60,7 +60,7 @@ ColumnLayout {
         }
 
         // Power Toggle Button
-        ClickableIcon {
+        ClickableButton {
             readonly property color accent: Constants.network_color_active
 
             implicitHeight: Constants.size - (Constants.padding / 2)
@@ -260,7 +260,7 @@ ColumnLayout {
                                     visible: _NetworkItem.channel.length > 0
                                 }
 
-                                ClickableIcon {
+                                ClickableButton {
                                     size: Constants.font_size_lg
                                     padding: 0
 
@@ -296,7 +296,7 @@ ColumnLayout {
                                     color: Constants.network_color_ink_muted
                                 }
 
-                                ClickableIcon {
+                                ClickableButton {
                                     size: Constants.icon_size * 1.5
                                     padding: 0
 
@@ -344,7 +344,7 @@ ColumnLayout {
                                     }
                                 }
 
-                                ClickableIcon {
+                                ClickableButton {
                                     readonly property color accent: Constants.network_color_critical
 
                                     size: (Constants.icon_size * 1.5) - (padding * 2)
@@ -382,7 +382,7 @@ ColumnLayout {
                                 Component {
                                     id: _ConnectActionComponent
 
-                                    ClickableButton {
+                                    ClickableWithAccent {
                                         implicitWidth: 96
                                         Layout.fillHeight: true
 

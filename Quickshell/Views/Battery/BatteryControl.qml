@@ -115,7 +115,7 @@ import qs.Components
 //     }
 // }
 
-ClickableWithIcon {
+ClickableButton {
     id: root
 
     readonly property var device: UPower.displayDevice

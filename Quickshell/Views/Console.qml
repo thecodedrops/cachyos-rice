@@ -210,7 +210,7 @@ StyledBox {
 
             spacing: root._gap
 
-            ClickableIcon {
+            ClickableButton {
                 visible: (opacity) > 0
                 opacity: (root.navigation_stack.length > 1) ? 1 : 0
                 Behavior on opacity { NumberAnimation { duration: 200 } }
@@ -247,7 +247,7 @@ StyledBox {
                 }
             }
             
-            ClickableIcon {
+            ClickableButton {
                 size: Constants.icon_size
                 padding: Constants.padding
                 radius: Constants.icon_size

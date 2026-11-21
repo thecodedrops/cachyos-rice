@@ -163,7 +163,7 @@ Item {
                         anchors.bottom: parent.bottom
                         anchors.margins: Constants.spacing
 
-                        ClickableIcon {
+                        ClickableButton {
                             iconname: "Desktop-Mirror.svg"
                             size: Constants.icon_size
                             styles.icon_color_idle: Constants.color_subtext
@@ -174,7 +174,7 @@ Item {
             }
         }
 
-        ClickableIcon {
+        ClickableButton {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.margins: Constants.padding

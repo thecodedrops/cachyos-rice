@@ -46,7 +46,7 @@ ColumnLayout {
             styles.color_active: Constants.bluetooth_color_busy
         }
 
-        ClickableButton {
+        ClickableWithAccent {
             implicitWidth: 108
             implicitHeight: Constants.size - (Constants.padding / 2)
 
@@ -63,7 +63,7 @@ ColumnLayout {
         }
 
         // Power Toggle Button
-        ClickableIcon {
+        ClickableButton {
             implicitHeight: Constants.size - (Constants.padding / 2)
             implicitWidth: Constants.size - (Constants.padding / 2)
             
@@ -217,7 +217,7 @@ ColumnLayout {
 
                         readonly property color muted: Qt.alpha(Constants.bluetooth_color_ink_muted, 0.5)
 
-                        ClickableIcon {
+                        ClickableButton {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -234,7 +234,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.blocked = !_DeviceItem.modelData.blocked
                         }
 
-                        ClickableIcon {
+                        ClickableButton {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -251,7 +251,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.wakeAllowed = !_DeviceItem.modelData.wakeAllowed
                         }
 
-                        ClickableIcon {
+                        ClickableButton {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -268,7 +268,7 @@ ColumnLayout {
                             onClicked: _DeviceItem.modelData.trusted = !_DeviceItem.modelData.trusted
                         }
 
-                        ClickableIcon {
+                        ClickableButton {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
@@ -300,7 +300,7 @@ ColumnLayout {
                             Component {
                                 id: _ConnectActionComponent
 
-                                ClickableButton {
+                                ClickableWithAccent {
                                     implicitWidth: 84
 
                                     topPadding: Constants.padding / 1.5
@@ -357,7 +357,7 @@ ColumnLayout {
                             }
                         }
 
-                        ClickableIcon {
+                        ClickableButton {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
                             padding: Constants.padding / 1.5

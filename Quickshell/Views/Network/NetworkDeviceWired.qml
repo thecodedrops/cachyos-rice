@@ -119,7 +119,7 @@ ColumnLayout {
                             spacing: Constants.spacing
                             Layout.fillHeight: true
 
-                            ClickableIcon {
+                            ClickableButton {
                                 size: Constants.font_size_lg
                                 padding: 0
 
@@ -158,7 +158,7 @@ ColumnLayout {
                                 Component {
                                     id: _ConnectActionComponent
 
-                                    ClickableButton {
+                                    ClickableWithAccent {
                                         implicitWidth: 96
                                         Layout.fillHeight: true
 

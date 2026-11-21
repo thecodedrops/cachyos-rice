@@ -194,12 +194,12 @@ Singleton {
     readonly property color  polkit_color_ink_muted:                color_subtext
 
     // Network
-    readonly property bool   network_scramble_ssid:                 false
+    readonly property bool   network_scramble_ssid:                 true
+    readonly property bool   network_control_hide_ssid:             false
+    readonly property real   network_control_max_width:             160
+
     readonly property real   network_threshold_warning:             0.50
     readonly property real   network_threshold_critical:            0.25
-
-    readonly property real   network_control_max_width:             160
-    readonly property bool   network_control_hide_ssid:             true
 
     readonly property color  network_color_background:              color_transparent
     readonly property color  network_color_border:                  color_surface
@@ -259,7 +259,7 @@ Singleton {
     // Wizard: Tarball Extraction
     readonly property string package_extraction_scan_directory:     "~/Downloads"
     readonly property string package_extraction_target_directory:   "~/.local/apps"
-    readonly property bool package_extraction_delete_originals:     false
+    readonly property bool   package_extraction_delete_originals:   false
 
     // System settings
     readonly property string system_wallpaper_path:                 "/media/storage/Pictures/Mirror World - Neutral Zone - Resting Place.jpg"

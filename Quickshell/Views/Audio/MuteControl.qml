@@ -6,7 +6,7 @@ import qs.Components
 
 import qs.Utilities
 
-ClickableIcon {
+ClickableButton {
     readonly property bool muted: PipewireService.defaultMicrophone?.audio?.muted ?? false
 
     size: Constants.icon_size

@@ -53,7 +53,7 @@ StyledBox {
             // RowLayout {
             //     spacing: 2
 
-            //     ClickableIcon {
+            //     ClickableButton {
             //         enabled: control.agent && control.agent.isActive && control.flow != null
             //         size: Constants.icon_size
             //         iconname: "Check.svg"
@@ -73,7 +73,7 @@ StyledBox {
             //         }
             //     }
 
-            //     ClickableIcon {
+            //     ClickableButton {
             //         enabled: control.agent && control.agent.isActive && control.flow != null
             //         size: Constants.icon_size
             //         iconname: "Dismiss.svg"

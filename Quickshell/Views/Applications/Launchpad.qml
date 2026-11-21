@@ -135,7 +135,7 @@ ColumnLayout {
                 tint: Qt.alpha(Constants.spotlight_color_ink_muted, (_SearchTextField.activeFocus) ? 0.60: 0.20)
             }
 
-            ClickableIcon {
+            ClickableButton {
                 size: Constants.spotlight_icon_size
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

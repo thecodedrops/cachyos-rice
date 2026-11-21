@@ -84,7 +84,7 @@ ColumnLayout {
 
                 Item { Layout.fillWidth: true }
 
-                ClickableButton {
+                ClickableWithAccent {
                     enabled: !_TarballInspectionProcess.running
                     padding: Constants.padding / 1.5
                     leftPadding: Constants.padding
@@ -224,7 +224,7 @@ ColumnLayout {
                 
                 Item { Layout.fillWidth: true }
 
-                ClickableButton {
+                ClickableWithAccent {
                     enabled: !_ExtractionProcess.running && !root.success
                     topPadding: Constants.padding / 1.5
                     bottomPadding: Constants.padding / 1.5
@@ -353,7 +353,7 @@ ColumnLayout {
                         }
                     }
 
-                    ClickableButton {
+                    ClickableWithAccent {
                         enabled: (_ExtractionComponentLayout.selectedPackageIsAppImage ? root.context.extractionDirectory !== "" : (root.context.packageDirectory !== "" && _TextFieldDestinationFolder.text !== "")) && !_ExtractionProcess.running && !root.success
 
                         Layout.fillHeight: true

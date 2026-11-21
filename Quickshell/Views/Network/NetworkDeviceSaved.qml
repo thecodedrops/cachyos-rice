@@ -138,7 +138,7 @@ ColumnLayout {
                         font.pixelSize: Constants.font_size_sm
                     }
 
-                    ClickableButton {
+                    ClickableWithAccent {
                         implicitWidth: 76
 
                         topPadding: Constants.padding / 1.5

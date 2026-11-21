@@ -212,7 +212,7 @@ PanelWindow {
                             Behavior on opacity { NumberAnimation { duration: container._animationDuration / 2 } }
                         }
 
-                        ClickableIcon {
+                        ClickableButton {
                             size: 16
                             iconname: "Dismiss.svg"
                             styles.icon_color_idle: Constants.notification_color_ink_muted
