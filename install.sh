@@ -28,6 +28,7 @@ done
 # ==============================================================================
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGE_DIR="$SCRIPT_DIR/Packages"
+QUICKSHELL_DIR="$SCRIPT_DIR/Quickshell"
 THEMES_DIR="$SCRIPT_DIR/Themes"
 
 TIMESTAMP="$(date +%Y%m%d%H%M%S)"
@@ -264,7 +265,7 @@ create_symlink "$PACKAGE_DIR/fastfetch" "$HOME/.config/fastfetch"
 create_symlink "$PACKAGE_DIR/foot" "$HOME/.config/foot"
 create_symlink "$PACKAGE_DIR/mango" "$HOME/.config/mango"
 create_symlink "$PACKAGE_DIR/mpv" "$HOME/.config/mpv"
-create_symlink "$PACKAGE_DIR/shell" "$HOME/.config/quickshell"
+create_symlink "$QUICKSHELL_DIR" "$HOME/.config/quickshell"
 create_symlink "$PACKAGE_DIR/zsh" "$HOME/.config/zsh"
 create_symlink "$PACKAGE_DIR/zsh/.zprofile" "$HOME/.zprofile"
 create_symlink "$PACKAGE_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
@@ -330,10 +331,14 @@ else
     log "${GRAY}:: Skipped GRUB and Plymouth setup.${NC}"
 fi
 
-if confirm ":: Do you want to clean up redundant bash files?"; then
-	log "${YELLOW}:: Deleting all files starting with [.bash] from [${HOME}]${NC}"
-	rm -f "$HOME"/.bash*
-	log "${GREEN}Done.${NC}"
+if compgen -G "$HOME/.bash*" > /dev/null; then
+    if confirm ":: Do you want to clean up redundant bash files?"; then
+        log "${YELLOW}:: Deleting all files starting with [.bash] from [${HOME}]${NC}"
+        rm -f "$HOME"/.bash*
+        log "${GREEN}Done.${NC}"
+    fi
+else
+    log "${GRAY}:: Skipped bash file cleanup - no files detected.${NC}"
 fi
 
 echo ""

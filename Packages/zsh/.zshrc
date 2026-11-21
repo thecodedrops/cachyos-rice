@@ -1,4 +1,4 @@
-HISTFILE=$HOME/.config/zsh/.zsh_history
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 HISTDUP=erase
@@ -9,7 +9,6 @@ setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Fix what zsh defines as a word
@@ -40,10 +39,6 @@ bindkey "^[[3;5~" kill-word
 bindkey "^U" backward-kill-line           
 bindkey "^[[3;6~" kill-line               
 
-# --- System & Environment ---
-export PATH=$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin
-export EDITOR="/usr/bin/micro"
-
 # Auto-suggest package if command is not found
 command_not_found_handler () {
     if [ -x /usr/lib/command-not-found ]; then
@@ -57,11 +52,6 @@ command_not_found_handler () {
         return 127
     fi
 }
-
-# --- Plugins & External Tools ---
-if [ -f $HOME/.config/zsh/auto-suggestion.zsh ]; then
-    source $HOME/.config/zsh/auto-suggestion.zsh
-fi
 
 # Prompt Engineering Starship
 # Add space between commands (but avoid blank space at top)
@@ -85,31 +75,23 @@ if command -v starship &> /dev/null; then
 fi
 
 # --- Custom Aliases (Optimized Native Zsh Loop) ---
-for aliases_file in $HOME/.aliases.*.zsh(N); do
+for aliases_file in $ZDOTDIR/.aliases.*.zsh(N); do
     source $aliases_file
 done
 
 # Fast fetch on open
-if command -v fastfetch &> /dev/null; then
-    fastfetch
-fi
+# if command -v fastfetch &> /dev/null; then
+#     fastfetch
+# fi
 
-# --- ZSH Plugins Sourced Last ---
-# Load History Substring Search
+# --- Plugins & External Tools ---
+# # Shell command completion for gcloud.
+# if [ -f '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Added required bindings for substring search to function
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Load Syntax Highlighting (MUST BE THE ABSOLUTE LAST LINE)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Downloads/google-cloud-cli-linux-x86_64/google-cloud-sdk/completion.zsh.inc'; fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
