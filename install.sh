@@ -54,9 +54,6 @@ log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $plain_message" >> "$LOG_FILE"
 }
 
-log "${RED}Installation is currently broken. A fix will come soon.${NC}";
-exit -1
-
 # ==============================================================================
 # Setup default parameters
 # ==============================================================================
@@ -118,6 +115,7 @@ handle_conflict_sudo() {
         fi
         
         sudo mv "$target" "$backup_path"
+        sudo chown "$USER:$USER" "$backup_path"
         log "${YELLOW}:: Backup: $target → $backup_path${NC}"
     fi
 }
@@ -126,9 +124,8 @@ handle_conflict_sudo() {
 # Action Functions
 # ==============================================================================
 create_symlink() {
-    local rel_src="$1"
+    local src="$1"
     local dest="$2"
-    local src="$SCRIPT_DIR/$rel_src"
 
     if [ ! -e "$src" ]; then
         log "${RED}:: Error: Source path '$src' does not exist!${NC}"
@@ -140,7 +137,7 @@ create_symlink() {
 
     # Idempotency check: Skip if already correctly linked
     if [ -L "$dest" ] && [ "$(readlink -f "$dest")" = "$(readlink -f "$src")" ]; then
-        log "${CYAN}:: Already Linked: $rel_src → $dest${NC}"
+        log "${CYAN}:: Already Linked: $src → $dest${NC}"
         return
     fi
 
@@ -148,13 +145,12 @@ create_symlink() {
     handle_conflict "$dest"
 
     ln -s "$src" "$dest"
-    log "${GREEN}:: Linked: $rel_src → $dest${NC}"
+    log "${GREEN}:: Linked: $src → $dest${NC}"
 }
 
 copy_item_sudo() {
-    local rel_src="$1"
+    local src="$1"
     local dest="$2"
-    local src="$SCRIPT_DIR/$rel_src"
 
     if [ ! -e "$src" ]; then
         log "${RED}:: Error: Source path '$src' does not exist!${NC}"
@@ -168,7 +164,7 @@ copy_item_sudo() {
     handle_conflict_sudo "$dest"
 
     sudo cp -r "$src" "$dest"
-    log "${GREEN}:: Copied: $rel_src → $dest${NC}"
+    log "${GREEN}:: Copied: $src → $dest${NC}"
 }
 
 install_pacman() {
@@ -303,7 +299,6 @@ gsettings set org.gnome.desktop.interface gtk-theme "${GTK_THEME}"
 gsettings set org.gnome.desktop.interface color-scheme "${GTK_MODE}"
 
 log "${GREEN}:: GTK theme set to [${GTK_THEME}][${GTK_MODE}]${NC}"
-log "${GRAY}:: Skipped GTK setup...${NC}"
 
 # ==============================================================================
 # Execution: System configurations (Sometimes sudo)
@@ -337,7 +332,7 @@ fi
 
 if confirm ":: Do you want to clean up redundant bash files?"; then
 	log "${YELLOW}:: Deleting all files starting with [.bash] from [${HOME}]${NC}"
-	rm -f "$HOME/.bash"*
+	rm -f "$HOME"/.bash*
 	log "${GREEN}Done.${NC}"
 fi
 
