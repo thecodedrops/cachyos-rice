@@ -70,15 +70,28 @@ WlSessionLockSurface {
                 onClicked: if (Debug._DEBUG_MODE_) root.context.unlocked()
             }
 
-            ClickableButton {
+            RowLayout {
                 anchors.top: parent.top
                 anchors.right: parent.right
+                spacing: Constants.padding * 2
 
-                iconname: "Power.svg"
-                size: Constants.icon_size
-                styles.icon_color_idle: Constants.color_subtext
-                styles.icon_color_active: Constants.color_text
-                onClicked: Daemon.execute(["systemctl", "poweroff"])
+                ClickableButton {
+
+                    iconname: "Suspend.svg"
+                    size: Constants.icon_size
+                    styles.icon_color_idle: Constants.color_subtext
+                    styles.icon_color_active: Constants.color_text
+                    onClicked: Daemon.execute(["systemctl", "suspend"])
+                }
+
+                ClickableButton {
+
+                    iconname: "Power.svg"
+                    size: Constants.icon_size
+                    styles.icon_color_idle: Constants.color_subtext
+                    styles.icon_color_active: Constants.color_text
+                    onClicked: Daemon.execute(["systemctl", "poweroff"])
+                }
             }
         }
 

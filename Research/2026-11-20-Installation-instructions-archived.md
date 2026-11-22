@@ -1,6 +1,6 @@
 ### Installation Instructions 
 
-> Deprecated 2026.11.19
+> Archived (Deprecated 2026.11.20)
 
 Symlink the following with "./*" paths being relative from the script's pwd:​‌
 - `./fastfetch` → `$HOME/.config/fastfetch`
