@@ -1,4 +1,8 @@
-### Controlling Laptop Lid Events
+---
+Tags:
+Created: 2026-10-26
+---
+##### Controlling Laptop Lid Events
 
 | Event             | Condition                           | Sleep/Wake | Screen         |
 | :---------------- | :---------------------------------- | :--------- | :------------- |

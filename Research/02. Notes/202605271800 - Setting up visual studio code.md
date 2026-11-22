@@ -1,4 +1,8 @@
-### Visual Studio Code
+---
+Tags:
+Created: 2026-05-27
+---
+##### Visual Studio Code
 
 Setting custom font (with Nerd Symbols) required changing the preset font family.
 - `Ctrl + ,` to open settings

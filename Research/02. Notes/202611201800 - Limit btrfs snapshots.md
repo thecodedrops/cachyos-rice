@@ -1,4 +1,8 @@
-### Limiting BTRFS snapshots
+---
+Tags:
+Created: 2026-11-20
+---
+##### Limiting BTRFS snapshots
 
 ```conf
 # Edit /etc/snapper/configs/root

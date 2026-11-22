@@ -1,7 +1,10 @@
-### Installation Instructions 
-
+---
+Tags:
+  - Archive
+Created: 2026-11-20
+---
 > Archived (Deprecated 2026.11.20)
-
+##### Installation Instructions 
 Symlink the following with "./*" paths being relative from the script's pwd:​‌
 - `./fastfetch` → `$HOME/.config/fastfetch`
 - `./foot` → `$HOME/.config/foot`

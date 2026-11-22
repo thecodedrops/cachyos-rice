@@ -1,0 +1,30 @@
+{
+	"nodes":[
+		{"id":"d1bee23deea5bc17","type":"file","file":"00. Assets/bento-design.webp","x":-20,"y":480,"width":617,"height":386},
+		{"id":"cb6ec67dd025fcea","type":"file","file":"00. Assets/reddit-almenscorner.webp","x":620,"y":480,"width":1173,"height":660},
+		{"id":"4e561c8f25a56318","type":"file","file":"00. Assets/reddit-mageren-oc-quantum.webp","x":-20,"y":920,"width":617,"height":347},
+		{"id":"a42c2122a678c096","type":"file","file":"00. Assets/gh-dhrruvsharma-shell.webp","x":-20,"y":1320,"width":617,"height":386},
+		{"id":"bc022562069f09b6","type":"file","file":"00. Assets/gh-snes19xx-surface-dots.webp","x":620,"y":1191,"width":862,"height":515},
+		{"id":"06c0302b9c112e23","type":"text","text":"Base: END4\nCustomisations: EWWW","x":1880,"y":777,"width":200,"height":67},
+		{"id":"31d05c85afa821f6","type":"text","text":"Loses aesthetic when dark windows behind","x":-320,"y":643,"width":180,"height":60},
+		{"id":"dd74aeeacf9b137d","type":"text","text":"Nice side panel for notifications maybe?","x":-320,"y":1060,"width":180,"height":67},
+		{"id":"d82953180b89a592","type":"text","text":"++ Wallpaper and theme carousel","x":-320,"y":1480,"width":180,"height":67},
+		{"id":"1a0c75ab3f77dba8","type":"file","file":"00. Assets/hypr-network-manager-wifi.webp","x":-20,"y":-36,"width":420,"height":257},
+		{"id":"9ecb010494b1e7bc","type":"file","file":"00. Assets/hypr-network-manager-wifi-details.webp","x":428,"y":-36,"width":339,"height":465},
+		{"id":"2dced378d6688078","type":"file","file":"00. Assets/hypr-network-manager-ethernet.webp","x":-20,"y":270,"width":420,"height":159},
+		{"id":"22dd6de6bcfbedc8","type":"file","file":"00. Assets/hypr-network-manager-wifi-settings.webp","x":800,"y":-36,"width":345,"height":465},
+		{"id":"aba6963b18cca4a2","type":"file","file":"00. Assets/sample-calendar.webp","x":1180,"y":-36,"width":422,"height":465},
+		{"id":"28d31c4daec9112a","type":"text","text":"Nice way of showing dates with events","x":1693,"y":163,"width":200,"height":67},
+		{"id":"e8b8771220fe3296","type":"file","file":"00. Assets/wallpaper-theme-generation.webp","x":-20,"y":1760,"width":666,"height":515},
+		{"id":"16955b5f344d3cfd","type":"text","text":"Light mode sample - paper format","x":1613,"y":1415,"width":180,"height":67},
+		{"id":"0a70b1a46092e56e","type":"file","file":"00. Assets/gh-dhrruvsharma-shell-wallpaper-picker.webp","x":680,"y":1760,"width":680,"height":425}
+	],
+	"edges":[
+		{"id":"e7e212531f776b5e","fromNode":"4e561c8f25a56318","fromSide":"left","toNode":"dd74aeeacf9b137d","toSide":"right"},
+		{"id":"a54609027342d153","fromNode":"cb6ec67dd025fcea","fromSide":"right","toNode":"06c0302b9c112e23","toSide":"left"},
+		{"id":"121d2e2078dc0d9e","fromNode":"d1bee23deea5bc17","fromSide":"left","toNode":"31d05c85afa821f6","toSide":"right"},
+		{"id":"a8f42b23c189d02c","fromNode":"aba6963b18cca4a2","fromSide":"right","toNode":"28d31c4daec9112a","toSide":"left"},
+		{"id":"5c73a8adbc6bd961","fromNode":"a42c2122a678c096","fromSide":"left","toNode":"d82953180b89a592","toSide":"right"},
+		{"id":"f63ff440e4b4cb5f","fromNode":"bc022562069f09b6","fromSide":"right","toNode":"16955b5f344d3cfd","toSide":"left"}
+	]
+}

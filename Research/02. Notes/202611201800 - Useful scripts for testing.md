@@ -1,3 +1,7 @@
+---
+Tags:
+Created: 2026-11-20
+---
 ### Test Scripts
 
 Launching Quickshell in DEBUG mode to get detailed logs.

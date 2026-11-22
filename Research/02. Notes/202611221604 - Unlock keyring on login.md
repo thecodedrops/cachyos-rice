@@ -1,4 +1,8 @@
-### Unlocking `gnome-keyring` on login
+---
+Tags:
+Created: 2026-11-22
+---
+##### Unlocking `gnome-keyring` on login
 
 Solves Visual Studio Code asking for keyring password the first time it's opened.
 

@@ -1,3 +1,7 @@
+---
+Tags:
+Created: 2026-05-25
+---
 Waking from sleep, Network Manager would hang - so I created a script to restart it clean on wake:
 
 ```bash
