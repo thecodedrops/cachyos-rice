@@ -87,5 +87,8 @@ compile_commands.json
 *.ignore.*
 .qmlls.ini
 *.log
-/themes/gtk/**/settings.ini
-/themes/gtk/**/bookmarks
+
+*/**/gtk/**/settings.ini
+*/**/gtk/**/bookmarks
+
+*/**/.obsidian
