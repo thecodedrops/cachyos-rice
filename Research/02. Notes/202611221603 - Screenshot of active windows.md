@@ -2,7 +2,7 @@
 Tags:
 Created: 2026-11-22
 ---
-##### Using Mango IPC and Quickshell to screenshot specific windows/clients
+### Using Mango IPC and Quickshell to screenshot specific windows/clients
 
 General flow:
 1. Place a semi-opaque overlay on all screens.
@@ -11,7 +11,7 @@ General flow:
 4. Get window coordinates and dimensions for screenshot
 5. Pass to a bash script to use `grim` for capture
 
-###### Finding all active windows/clients
+#### Finding all active windows/clients
 ```qml
 import Quickshell
 import Quickshell.Io
@@ -36,7 +36,7 @@ Scope {
 }
 ```
 
-###### Finding window at cursor position
+#### Finding window at cursor position
 ```js
 function findWindowUnderCursor() {
     // Run cursorpos and all-clients via shell or background processes, 
@@ -56,7 +56,7 @@ function findWindowUnderCursor() {
 }
 ```
 
-###### Example bash snippet for grim capture
+#### Example bash snippet for grim capture
 > Use coordinates and dimensions fetched prior to avoid requiring `jq`
 ```bash
 # Example bash snippet utilizing mmsg and grim
@@ -64,7 +64,7 @@ geometry=$(mmsg get focusing-client | jq -r '"\(.x),\(.y) \(.width)x\(.height)"'
 [ -n "$geometry" ] && grim -g "$geometry" "$HOME/Pictures/Screenshots/window-$(date +%s).png"
 ```
 
-###### Highlighting windows for screenshot
+#### Highlighting windows for screenshot
 ```qml
 import Quickshell
 import Quickshell.Io

@@ -2,7 +2,6 @@
 Tags:
 Created: 2026-05-27
 ---
-##### File Manager (Nautilus/Dolphin)
 Dedicated storage partition (in BTRFS) would not appear in File Manager, requiring a manual fix.
 
 ```

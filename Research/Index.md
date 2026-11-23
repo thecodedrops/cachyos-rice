@@ -1,3 +1,9 @@
+# Heading 1
+## Heading 2
+### Heading 3
+
+#### Heading 4
+
 ##### Process management
 The shell launches many processes - some of which stay alive in the background (e.g. `swaybg`).
 
@@ -18,7 +24,7 @@ Too many files now provide for button component: `Clickable`, `ClickableWithIcon
 Currently works as basic process that allows:
 - Region selection
 - Full screen
-- Load clipboard into satty (if it's an image)
+- Load clipboard into `satty` (if it's an image)
 
 Good for now, but can be better.
 
@@ -29,5 +35,6 @@ Good for now, but can be better.
   - (Optional) Clipboard + save to folder + open in `satty`
 
 - [ ] Allow screenshot of windows
-  > Reference: [2026-11-22-Screenshot-of-windows](./Research/2026-11-22-Screenshot-of-windows.md)
+      Reference: [2026-11-22-Screenshot-of-windows](./Research/2026-11-22-Screenshot-of-windows.md)
+- [ ] 
   

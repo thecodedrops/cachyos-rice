@@ -2,7 +2,7 @@
 Tags:
 Created: 2026-11-20
 ---
-###### Antigravity
+#### Antigravity
 ```toml
 [Desktop Entry]
 Name=Antigravity
@@ -16,7 +16,7 @@ StartupWMClass=Antigravity
 Icon=/home/[user]/.local/apps/antigravity/icon.png
 ```
 
-###### Obsidian
+#### Obsidian
 ```toml
 [Desktop Entry]
 Name=Obsidian (1.14.5)
@@ -30,7 +30,7 @@ StartupWMClass=obsidian
 MimeType=x-scheme-handler/obsidian;
 ```
 
-###### Visual Studio Code
+#### Visual Studio Code
 ```toml
 [Desktop Entry]
 Name=Visual Studio Code (1.145.2)
@@ -45,7 +45,7 @@ Categories=Utility;TextEditor;Development;IDE;
 MimeType=text/plain;inode/directory;application/x-code-workspace;
 ```
 
-###### HyprFM
+#### HyprFM
 ```toml
 [Desktop Entry]
 Name=Files
