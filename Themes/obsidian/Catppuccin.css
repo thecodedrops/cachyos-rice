@@ -1,5 +1,6 @@
 body {
   /* Radiuses */
+  --radius-xs: 2px;
   --radius-s: 4px;
   --radius-m: 8px;
   --radius-l: 10px;
@@ -46,49 +47,9 @@ body {
 
   /* Borders */
   --border-width: 1px;
-  --border-width-md: 1.5px;
-
-  /* Callouts */
-  --callout-border-width: 0.25px;
-  --callout-border-opacity: 0.2;
-  --callout-padding: var(--size-4-4) var(--size-4-4) var(--size-4-2) var(--size-4-4);
-  --callout-radius: var(--radius-s);
-  --callout-blend-mode: var(--highlight-mix-blend-mode);
-  --callout-title-padding: 0;
-  --callout-title-size: inherit;
-  --callout-content-padding: 0;
-  --callout-content-background: transparent;
-  --callout-bug: var(--color-red);
-  --callout-default: var(--color-blue);
-  --callout-error: var(--color-red);
-  --callout-example: var(--color-purple);
-  --callout-fail: var(--color-red);
-  --callout-important: var(--color-cyan);
-  --callout-info: var(--color-blue);
-  --callout-question: var(--color-yellow);
-  --callout-success: var(--color-green);
-  --callout-summary: var(--color-cyan);
-  --callout-tip: var(--color-cyan);
-  --callout-todo: var(--color-blue);
-  --callout-warning: var(--color-orange);
-  --callout-quote: rgb(158, 158, 158);
-
-  /* Canvas */
-  --canvas-background: var(--background-primary);
-  --canvas-card-label-color: var(--text-faint);
-  --canvas-color-1: var(--color-red);
-  --canvas-color-2: var(--color-orange);
-  --canvas-color-3: var(--color-yellow);
-  --canvas-color-4: var(--color-green);
-  --canvas-color-5: var(--color-cyan);
-  --canvas-color-6: var(--color-purple);
-  --canvas-dot-pattern: var(--color-base-30);
-
-  /* Caret (text entry cursor) */
-  --caret-color: var(--text-normal);
 
   /* Checkboxes */
-  --checkbox-radius: var(--radius-s);
+  --checkbox-radius: var(--radius-xs);
   --checkbox-size: var(--font-text-size);
   --checkbox-marker-color: var(--background-primary);
   --checkbox-color: var(--interactive-accent);
@@ -100,7 +61,7 @@ body {
 
   /* Code */
   --code-white-space: pre-wrap;
-  --code-size: var(--font-normal);
+  --code-size: var(--font-small);
   --code-background: var(--background-primary-alt);
   --code-normal: var(--text-muted);
   --code-comment: var(--text-faint);
@@ -155,6 +116,22 @@ body {
   /* GitHub Style Headings */
   --heading-formatting: var(--text-faint);
 
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.75;
+
+  --inline-title-size: 2.05em;
+  --inline-title-weight: 600;
+  --inline-title-line-height: 1.15;
+
+  /* Headings */  
+  --h1-weight: 600;
+  --h2-weight: 570;
+  --h3-weight: 600;
+  --h4-weight: 650;
+  --h5-weight: 650;
+  --h6-weight: 600;
+
   --h1-color: var(--text-normal);
   --h2-color: var(--text-normal);
   --h3-color: var(--text-normal);
@@ -162,15 +139,8 @@ body {
   --h5-color: var(--text-normal);
   --h6-color: var(--text-normal);
 
-  --h1-font: inherit;
-  --h2-font: inherit;
-  --h3-font: inherit;
-  --h4-font: inherit;
-  --h5-font: inherit;
-  --h6-font: inherit;
-
   --h1-line-height: 1.2;
-  --h2-line-height: 1.2;
+  --h2-line-height: 1.25;
   --h3-line-height: 1.3;
   --h4-line-height: 1.4;
   --h5-line-height: var(--line-height-normal);
@@ -197,12 +167,12 @@ body {
   --h5-variant: normal;
   --h6-variant: normal;
 
-  --h1-weight: 700;
-  --h2-weight: 600;
-  --h3-weight: 600;
-  --h4-weight: 600;
-  --h5-weight: 600;
-  --h6-weight: 600;
+  /* --h1-weight: 700; */
+  /* --h2-weight: 600; */
+  /* --h3-weight: 600; */
+  /* --h4-weight: 600; */
+  /* --h5-weight: 600; */
+  /* --h6-weight: 600; */
 
   --icon-xs: 14px;
   --icon-s: 16px;
@@ -215,16 +185,9 @@ body {
   --icon-l-stroke-width: 1.75px;
   --icon-xl-stroke-width: 1.25px;
 
-  /* Inputs */
-  --input-border-width-focus: 0.5px;
-
   /* Italic */
   --italic-color: inherit;
   --italic-weight: inherit;
-
-  /* Line heights */
-  --line-height-normal: 1.5;
-  --line-height-tight: 1.25;
 
   /* Links */
   --link-color: rgb(var(--ctp-blue));
@@ -255,53 +218,6 @@ body {
   --list-bullet-transform: none;
   --list-numbered-style: decimal;
 
-  --modal-border-width: var(--border-width-md);
-  --modal-border-color: var(--color-base-25, var(--background-modifier-border-focus));
-  --modal-radius: var(--radius-l);
-
-  /* Scrollbars */
-  --scrollbar-active-thumb-bg: rgb(var(--mono-rgb-100), 20%);
-  --scrollbar-bg: rgb(var(--mono-rgb-100), 5%);
-  --scrollbar-thumb-bg: rgb(var(--mono-rgb-100), 10%);
-
-  /* Sliders */
-  --slider-thumb-border-width: 0px;
-  --slider-thumb-background: var(--text-normal);
-  --slider-thumb-radius: 40%;
-  --slider-track-background: var(--background-modifier-border);
-  --slider-track-height: 8px;
-
-  /* Tables */
-  --table-background: transparent;
-  --table-border-width: 1px;
-  --table-border-color: var(--background-modifier-border);
-  --table-white-space: normal;
-  --table-header-background: var(--table-background);
-  --table-header-background-hover: inherit;
-  --table-header-border-width: var(--table-border-width);
-  --table-header-border-color: var(--table-border-color);
-  --table-header-font: inherit;
-  --table-header-size: var(--font-smaller);
-  --table-header-weight: var(--font-normal);
-  --table-header-color: var(--text-muted);
-  --table-text-size: inherit;
-  --table-text-color: inherit;
-  --table-column-max-width: none;
-  --table-column-alt-background: var(--table-background);
-  --table-column-first-border-width: var(--table-border-width);
-  --table-column-last-border-width: var(--table-border-width);
-  --table-row-background-hover: var(--table-background);
-  --table-row-alt-background: var(--table-background);
-  --table-row-last-border-width: var(--table-border-width);
-
-  /* Tags */
-  --tag-padding-x: 0.65em;
-  --tag-padding-y: 0.5em;
-  --tag-radius: 0.5em;
-
-  /* Toggles */
-  --toggle-thumb-color: var(--text-normal);
-
   /* Color mappings ------------------------ */
   /* Accent HSL values */
   --accent-h: 254;
@@ -323,11 +239,7 @@ body {
   --background-modifier-success-rgb: var(--color-green-rgb);
   --background-modifier-success: var(--color-green);
   --background-modifier-message: rgb(0, 0, 0, 90%);
-
-  /* Inputs */
   --background-modifier-form-field: var(--color-base-00);
-  --input-shadow: none !important;
-  --input-shadow-hover: none !important;
 
   /* Text */
   --text-normal: var(--color-base-100);
@@ -344,8 +256,11 @@ body {
   --interactive-accent-hsl: var(--color-accent-hsl);
   --interactive-accent: var(--color-accent-1);
   --interactive-accent-hover: var(--color-accent-2);
-}
 
+  /* Tabs */
+  --tab-radius-active: 2px 2px 0 0;
+  --tab-container-padding-start: 1px;
+}
 
 .theme-light,
 .theme-light.ctp-latte {
@@ -540,105 +455,12 @@ body {
   --highlight-mix-blend-mode: darken;
 }
 
-.modal {
-  box-shadow: none !important;
-}
-
-.modal .modal-header-button.clickable-icon,
-.modal .modal-close-button.clickable-icon {
-  inset-inline-end: var(--size-2-3);
-}
-
-.modal .vertical-tab-header .vertical-tab-header-group-title {
-  color: var(--text-muted);
-  opacity: 0.75;
-  font-size: 0.75em;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.modal .vertical-tab-header .vertical-tab-nav-item {
-  margin: var(--size-2-1) var(--size-2-2);
-  padding: var(--size-4-2);
-  transition: background-color 0.15s ease, color 0.15s ease, letter-spacing 0.15s ease;
-  cursor: var(--cursor-link);
-}
-
-.modal .vertical-tab-header .vertical-tab-nav-item:hover {
-  background-color: var(--background-modifier-border);
-  color: var(--text-normal);
-  letter-spacing: 1px;
-}
-
-.modal .vertical-tab-header .vertical-tab-nav-item.is-active {
-  background-color: var(--background-modifier-border);
-  color: var(--interactive-accent);
-  font-weight: var(--font-semibold);
-}
-
-.setting-item .setting-item-control * {
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-}
-
 input,
 button,
 a,
 select,
 .checkbox-container {
   cursor: var(--cursor-link);
-}
-
-/* --- Canvas --- */
-.canvas-card-menu {
-  padding: var(--size-2-2);
-  gap: var(--size-2-2) !important;
-  height: auto !important;
-  border: 1px solid var(--background-modifier-border) !important;
-  border-radius: var(--radius-m);
-}
-
-.canvas-card-menu .canvas-card-menu-button {
-  --icon-size: var(--icon-l) !important;
-  border-radius: var(--radius-s);
-  padding: var(--size-2-3);
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.canvas-card-menu .canvas-card-menu-button:hover {
-  background-color: var(--background-modifier-hover);
-}
-
-.canvas-card-menu .canvas-card-menu-button.mod-draggable {
-  cursor: var(--cursor-link);
-}
-
-.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
-  transform: none;
-}
-
-.canvas-card-menu .canvas-card-menu-button svg {
-  fill: none !important;
-}
-
-.metadata-property {
-  min-height: var(--size-4-9);
-}
-
-.metadata-property-key,
-.metadata-property-value {
-    align-items: center;
-}
-
-.callout .callout-content>p {
-  --p-spacing: var(--size-4-2) !important;
-}
-
-.callout-icon {
-  display: none;
-}
-
-table .table-cell-wrapper {
-  padding: var(--size-4-2) var(--size-4-3) !important;
 }
 
 .cm-formatting-list-ul, .cm-formatting-list-ol {
@@ -656,8 +478,4 @@ table .table-cell-wrapper {
 
 span {
   transition: color 0.15s ease;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }

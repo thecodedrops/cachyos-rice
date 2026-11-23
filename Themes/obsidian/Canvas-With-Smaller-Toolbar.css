@@ -1,0 +1,43 @@
+body {
+  /* Canvas */
+  --canvas-background: var(--background-primary);
+  --canvas-card-label-color: var(--text-faint);
+  --canvas-color-1: var(--color-red);
+  --canvas-color-2: var(--color-orange);
+  --canvas-color-3: var(--color-yellow);
+  --canvas-color-4: var(--color-green);
+  --canvas-color-5: var(--color-cyan);
+  --canvas-color-6: var(--color-purple);
+  --canvas-dot-pattern: var(--color-base-30);
+}
+
+.canvas-card-menu {
+  padding: var(--size-2-2);
+  gap: var(--size-2-2) !important;
+  height: auto !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  border-radius: var(--radius-m);
+}
+
+.canvas-card-menu .canvas-card-menu-button {
+  --icon-size: var(--icon-l) !important;
+  border-radius: var(--radius-s);
+  padding: var(--size-2-3);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.canvas-card-menu .canvas-card-menu-button:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.canvas-card-menu .canvas-card-menu-button.mod-draggable {
+  cursor: var(--cursor-link);
+}
+
+.canvas-card-menu .canvas-card-menu-button.mod-draggable:hover svg {
+  transform: none;
+}
+
+.canvas-card-menu .canvas-card-menu-button svg {
+  fill: none !important;
+}

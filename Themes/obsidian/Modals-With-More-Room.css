@@ -1,0 +1,75 @@
+body {
+  --border-width-md: 1.5px;
+
+  /* Inputs */
+  --input-shadow: none !important;
+  --input-shadow-hover: none !important;
+  --input-border-width-focus: 1px;
+
+  /* Sliders */
+  --slider-thumb-border-width: 0px;
+  --slider-thumb-background: var(--text-normal);
+  --slider-thumb-radius: 40%;
+  --slider-track-background: var(--background-modifier-border);
+  --slider-track-height: 8px;
+
+  /* Toggles */
+  --toggle-thumb-color: var(--text-normal);
+
+  /* Modals */
+  --modal-border-width: var(--border-width-md);
+  --modal-border-color: var(--color-base-25, var(--background-modifier-border-focus));
+  --modal-radius: var(--radius-l);
+}
+
+.modal {
+  box-shadow: none !important;
+}
+
+.modal .modal-header-button.clickable-icon,
+.modal .modal-close-button.clickable-icon {
+  inset-inline-end: var(--size-2-3);
+}
+
+.modal .vertical-tab-header .vertical-tab-header-group-title {
+  color: var(--text-muted);
+  opacity: 0.75;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modal .vertical-tab-header .vertical-tab-nav-item {
+  margin: var(--size-2-1) var(--size-2-2);
+  padding: var(--size-4-2);
+  transition: background-color 0.15s ease, color 0.15s ease, letter-spacing 0.15s ease;
+  cursor: var(--cursor-link);
+}
+
+.modal .vertical-tab-header .vertical-tab-nav-item:hover {
+  background-color: var(--background-modifier-border);
+  color: var(--text-normal);
+  letter-spacing: 1px;
+}
+
+.modal .vertical-tab-header .vertical-tab-nav-item.is-active {
+  background-color: var(--background-modifier-border);
+  color: var(--interactive-accent);
+  font-weight: var(--font-semibold);
+}
+
+.setting-item .setting-item-control * {
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+input,
+button,
+a,
+select,
+.checkbox-container {
+  cursor: var(--cursor-link);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

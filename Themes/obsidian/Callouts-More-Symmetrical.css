@@ -1,0 +1,34 @@
+body {
+  /* Callouts */
+  --callout-border-width: 0.25px;
+  --callout-border-opacity: 0.2;
+  --callout-padding: var(--size-4-4) var(--size-4-4) var(--size-4-2) var(--size-4-4);
+  --callout-radius: var(--radius-s);
+  --callout-blend-mode: var(--highlight-mix-blend-mode);
+  --callout-title-padding: 0;
+  --callout-title-size: inherit;
+  --callout-content-padding: 0;
+  --callout-content-background: transparent;
+  --callout-bug: var(--color-red);
+  --callout-default: var(--color-blue);
+  --callout-error: var(--color-red);
+  --callout-example: var(--color-purple);
+  --callout-fail: var(--color-red);
+  --callout-important: var(--color-cyan);
+  --callout-info: var(--color-blue);
+  --callout-question: var(--color-yellow);
+  --callout-success: var(--color-green);
+  --callout-summary: var(--color-cyan);
+  --callout-tip: var(--color-cyan);
+  --callout-todo: var(--color-blue);
+  --callout-warning: var(--color-orange);
+  --callout-quote: rgb(158, 158, 158);
+}
+
+.callout .callout-content>p {
+  --p-spacing: var(--size-4-2) !important;
+}
+
+.callout-icon {
+  display: none;
+}

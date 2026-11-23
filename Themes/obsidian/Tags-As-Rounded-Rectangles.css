@@ -1,0 +1,15 @@
+body {
+  /* Tags */
+  --tag-padding-x: 0.65em;
+  --tag-padding-y: 0.5em;
+  --tag-radius: 0.5em;
+}
+
+.metadata-property {
+  min-height: var(--size-4-9);
+}
+
+.metadata-property-key,
+.metadata-property-value {
+    align-items: center;
+}
