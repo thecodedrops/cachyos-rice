@@ -1,10 +1,4 @@
-# Heading 1
-## Heading 2
-### Heading 3
-
-#### Heading 4
-
-##### Process management
+### Process management
 The shell launches many processes - some of which stay alive in the background (e.g. `swaybg`).
 
 **Goal**: Clearer visualization, monitoring and tracking of processes managed by the shell, with ability to stop/pause/start on demand.
@@ -14,27 +8,25 @@ The shell launches many processes - some of which stay alive in the background (
 - [ ] Visualize processes running under the shell.
 - [ ] Stop/Pause/Start specific processes on demand.
 
-##### Buttons and clickables
+### Buttons and clickables
 Too many files now provide for button component: `Clickable`, `ClickableWithIcon`, `ClickableIcon`, `ClickableButton`.
 
 **Goal**: Clean up redundant button components, using only some generic versions.
 - [ ] Review use of `ClickableWithAccent` - it might actually be fit to replace all buttons.
 
-##### Screenshot utility
+### Screenshot utility
 Currently works as basic process that allows:
 - Region selection
 - Full screen
 - Load clipboard into `satty` (if it's an image)
 
-Good for now, but can be better.
+**Improvements:**
 
-- [ ] Allow mode selection on top of screenshot to clipboard:
-  - Do nothing (clipboard only)
-  - Clipboard + save to folder
-  - Clipboard + open in `satty`
-  - (Optional) Clipboard + save to folder + open in `satty`
+Allow mode selection on top of screenshot to clipboard:
+- [ ] Do nothing (clipboard only)
+- [ ] Clipboard + save to folder
+- [ ] Clipboard + open in `satty`
+- [ ] (Optional) Clipboard + save to folder + open in `satty`
 
-- [ ] Allow screenshot of windows
-      Reference: [2026-11-22-Screenshot-of-windows](./Research/2026-11-22-Screenshot-of-windows.md)
-- [ ] 
+Allow screenshot of windows ([202611221603 - Screenshot of active windows](202611221603%20-%20Screenshot%20of%20active%20windows.md))
   
