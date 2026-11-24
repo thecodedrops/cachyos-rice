@@ -3,13 +3,14 @@
 CWEBP="$HOME/.local/apps/libwebp/1.6.0/bin/cwebp"
 
 # Validate arguments
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <source_dir> <target_dir>"
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <source> <target: defaults to source>"
   exit 1
 fi
 
 SRC_DIR="${1%/}"
-DEST_DIR="${2%/}"
+DEST_DIR="${2:-$SRC_DIR}"
+DEST_DIR="${DEST_DIR%/}"
 
 if [ ! -d "$SRC_DIR" ]; then
   echo "Error: Source directory '$SRC_DIR' does not exist."

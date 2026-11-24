@@ -1,0 +1,12 @@
+body {
+  --font-text-theme: "Ardoise Sans", "Hanken Grotesk", "Atkinson Hyperlegible Next", "Segoe UI", sans-serif;
+  --font-interface-theme: "Ardoise Sans", "Hanken Grotesk", "Atkinson Hyperlegible Next", "Segoe UI", sans-serif;
+  --font-monospace-theme: "Ardoise Mono", "Geist Mono", "JetBrainsMono Nerd Font", "JetBrainsMono NF", Consolas, monospace;
+  --heading-font: "Ardoise Heading", "Fraunces", Georgia, serif;
+
+  --inline-title-font: var(--heading-font);
+
+  --h1-font: var(--heading-font);
+  --h2-font: var(--heading-font);
+  --h3-font: var(--heading-font);
+}

@@ -97,7 +97,7 @@ Singleton {
     readonly property bool   console_backdrop_enabled:              true
     
     readonly property color  console_color_background:              color_mantle
-    readonly property color  console_color_border:                  color_surface
+    readonly property color  console_color_border:                  Qt.alpha(color_overlay, 0.60)
 
     readonly property color  console_color_backdrop_active:         Qt.alpha(color_dark, 0.6)
     readonly property color  console_color_backdrop_inactive:       Qt.alpha(color_dark, 0)
@@ -195,7 +195,7 @@ Singleton {
 
     // Network
     readonly property bool   network_scramble_ssid:                 true
-    readonly property bool   network_control_hide_ssid:             false
+    readonly property bool   network_control_hide_ssid:             true
     readonly property real   network_control_max_width:             160
 
     readonly property real   network_threshold_warning:             0.50
