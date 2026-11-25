@@ -22,7 +22,7 @@ ListView {
 
     clip: true
     currentIndex: 0
-    keyNavigationEnabled: false
+    keyNavigationEnabled: true
 
     delegate: Clickable {
         id: _ApplicationItem
@@ -36,8 +36,9 @@ ListView {
         required property string icon
         required property var app
 
-        readonly property bool is_selected: root.currentIndex === _ApplicationItem.index
-        readonly property bool active: _ApplicationItem.containsMouse || is_selected
+        readonly property bool active: root.currentIndex === _ApplicationItem.index
+
+        onHoveredChanged: root.currentIndex = (containsMouse) ? _ApplicationItem.index : -1
         
         property var resourceUsage: ({})
 
@@ -65,7 +66,7 @@ ListView {
             anchors.fill: parent
             radius: Constants.radius
 
-            colors.background: (_ApplicationItem.is_selected) ? Constants.spotlight_color_background_active : Constants.color_transparent
+            colors.background: (_ApplicationItem.active) ? Constants.spotlight_color_background_active : Constants.color_transparent
             colors.border: Qt.alpha(Constants.spotlight_color_border, (_ApplicationItem.active) ? 0.25 : 0)
 
             RowLayout {

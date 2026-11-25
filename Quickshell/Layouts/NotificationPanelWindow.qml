@@ -23,7 +23,9 @@ PanelWindow {
     focusable: false
     color: "transparent"
 
+    // qmllint disable
     visible: NotificationService.notifications.values.length > 0
+    // qmllint enable
 
     mask: Region { item: _NotificationList }
 
@@ -212,11 +214,11 @@ PanelWindow {
                             Behavior on opacity { NumberAnimation { duration: container._animationDuration / 2 } }
                         }
 
-                        ClickableButton {
+                        ClickableBase {
                             size: 16
-                            iconname: "Dismiss.svg"
-                            styles.icon_color_idle: Constants.notification_color_ink_muted
-                            styles.icon_color_active: Constants.notification_color_ink_critical
+                            vector: "Dismiss.svg"
+                            ink_color_idle: Constants.notification_color_ink_muted
+                            ink_color_active: Constants.notification_color_ink_critical
 
                             visible: _ArcControl.opacity === 0
                             opacity: (_ArcControl.opacity === 0) ? 1 : 0
@@ -257,29 +259,24 @@ PanelWindow {
                     RowLayout {
                         id: _ActionsRow
                         Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignRight
                         Layout.topMargin: Constants.spacing / 2
 
                         visible: delegate_item.modelData.actions.length > 0
-                        spacing: Constants.spacing
+                        spacing: Constants.padding
 
                         Repeater {
                             model: [ ...delegate_item.modelData.actions].filter((a => (a.identifier || a.id) !== "default")) ?? []
 
-                            delegate: Clickable {
+                            delegate: ClickableBase {
                                 id: _ActionButton
                                 required property var modelData
 
-                                implicitHeight: _ActionText.implicitHeight + Constants.padding
+                                text: _ActionButton.modelData.text
+                                font.pixelSize: Constants.font_size
 
-                                StyledText {
-                                    id: _ActionText
-                                    anchors.centerIn: parent
-                                    text: _ActionButton.modelData.text
-                                    styles.color_idle: Constants.notification_color_ink_muted
-                                    styles.color_active: Constants.notification_color_ink_default
-                                    font.pixelSize: Constants.font_size
-                                    active: _ActionButton.containsMouse
-                                }
+                                ink_color_idle: Constants.notification_color_ink_muted
+                                ink_color_active: Constants.notification_color_ink_default
 
                                 onClicked: {
                                     dismiss_timeout.stop();

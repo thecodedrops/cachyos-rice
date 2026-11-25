@@ -22,14 +22,13 @@ ColumnLayout {
 
     Loader {
         Layout.fillWidth: true
-        sourceComponent: (root.page_size > 0) ? component_with_devices : component_no_device
+        sourceComponent: (root.page_size > 0) ? _AudioInputDeviceListComponent : _NoDevicesFoundComponent
     }
 
     Component {
-        id: component_with_devices
+        id: _AudioInputDeviceListComponent
 
         ListView {
-            id: device_list
             Layout.fillWidth: true
 
             implicitHeight: root.capped_height
@@ -43,7 +42,7 @@ ColumnLayout {
             ScrollBar.vertical: ScrollBar { policy: ScrollBar.AlwaysOff }
 
             delegate: Clickable {
-                id: clickable_delegate
+                id: _AudioInputDevice
                 width: ListView.view.width
                 implicitHeight: root.item_height
 
@@ -66,8 +65,8 @@ ColumnLayout {
                     radius: Constants.radius
 
                     color: Constants.network_color_background
-                    border.color: clickable_delegate.isDefault ? Qt.alpha(clickable_delegate.accent, 0.5) :
-                        (clickable_delegate.containsMouse) ? Qt.alpha(Constants.network_color_border, 1) : Qt.alpha(Constants.network_color_border, 0.5)
+                    border.color: _AudioInputDevice.isDefault ? Qt.alpha(_AudioInputDevice.accent, 0.5) :
+                        (_AudioInputDevice.containsMouse) ? Qt.alpha(Constants.network_color_border, 1) : Qt.alpha(Constants.network_color_border, 0.5)
                     border.width: 1
 
                     Behavior on border.color {
@@ -86,17 +85,17 @@ ColumnLayout {
                         StyledText {
                             Layout.fillWidth: true
                             horizontalAlignment: Text.AlignLeft
-                            text: clickable_delegate.deviceName
-                            color: clickable_delegate.isDefault ? clickable_delegate.accent : Constants.network_color_ink_default
+                            text: _AudioInputDevice.deviceName
+                            color: _AudioInputDevice.isDefault ? _AudioInputDevice.accent : Constants.network_color_ink_default
                             elide: Text.ElideRight
                         }
 
                         StyledText {
                             horizontalAlignment: Text.AlignRight
-                            text: clickable_delegate.nickName
+                            text: _AudioInputDevice.nickName
                             color: Constants.network_color_ink_muted
                             font.pixelSize: Constants.font_size - 1
-                            visible: clickable_delegate.nickName !== "" && clickable_delegate.nickName !== clickable_delegate.deviceName
+                            visible: _AudioInputDevice.nickName !== "" && _AudioInputDevice.nickName !== _AudioInputDevice.deviceName
                             elide: Text.ElideRight
                         }
                     }
@@ -106,18 +105,18 @@ ColumnLayout {
     }
 
     Component {
-        id: component_no_device
+        id: _NoDevicesFoundComponent
 
         Rectangle {
             Layout.fillWidth: true
-            implicitHeight: no_device_label.implicitHeight + Constants.padding * 3
+            implicitHeight: _NoDeviceFoundLabel.implicitHeight + Constants.padding * 3
             radius: Constants.radius
             color: Qt.alpha(Constants.network_color_inactive, 0.15)
             border.width: 1
             border.color: Constants.network_color_inactive
 
             StyledText {
-                id: no_device_label
+                id: _NoDeviceFoundLabel
                 leftPadding: Constants.padding * 1.5
                 rightPadding: Constants.padding * 1.5
                 anchors.verticalCenter: parent.verticalCenter

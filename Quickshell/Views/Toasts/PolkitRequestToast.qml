@@ -49,48 +49,6 @@ StyledBox {
                 wrapMode: Text.WordWrap
                 font.pixelSize: Constants.font_size ?? 14
             }
-
-            // RowLayout {
-            //     spacing: 2
-
-            //     ClickableButton {
-            //         enabled: control.agent && control.agent.isActive && control.flow != null
-            //         size: Constants.icon_size
-            //         iconname: "Check.svg"
-            //         radius: Constants.radius / 2
-            //         padding: Constants.padding / 1.5
-
-            //         styles.icon_color_idle: Constants.color_subtext
-            //         styles.icon_color_active: Constants.default_color_accent
-            //         styles.background_color_idle: Qt.alpha(Constants.color_surface, 0)
-            //         styles.background_color_active: Qt.alpha(Constants.color_surface, 1)
-
-            //         onClicked: {
-            //             if (control.flow) {
-            //                 control.flow.submit(_PolkitTextField.text);
-            //                 _PolkitTextField.text = "";
-            //             }
-            //         }
-            //     }
-
-            //     ClickableButton {
-            //         enabled: control.agent && control.agent.isActive && control.flow != null
-            //         size: Constants.icon_size
-            //         iconname: "Dismiss.svg"
-            //         radius: Constants.radius / 2
-            //         padding: Constants.padding / 1.5
-
-            //         styles.icon_color_idle: Constants.color_subtext
-            //         styles.icon_color_active: Constants.default_color_accent
-            //         styles.background_color_idle: Qt.alpha(Constants.color_surface, 0)
-            //         styles.background_color_active: Qt.alpha(Constants.color_surface, 1)
-
-            //         onClicked: {
-            //             _PolkitTextField.text = "";
-            //             control.dismiss();
-            //         }
-            //     }
-            // }
         }
 
         StyledText {

@@ -1,12 +1,9 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQuick.Effects
 import QtQuick.Layouts
 import QtQuick.Controls.Fusion
 
-import Quickshell
-import Quickshell.Widgets
 import Quickshell.Wayland
 
 import qs
@@ -58,38 +55,24 @@ WlSessionLockSurface {
 
             spacing: Constants.spacing
 
-            ClickableButton {
-                anchors.top: parent.top
-                anchors.left: parent.left
-
-                visible: Debug._DEBUG_MODE_
-                iconname: "Key.svg"
-                size: Constants.icon_size
-                styles.icon_color_idle: Constants.color_subtext
-                styles.icon_color_active: Constants.color_text
-                onClicked: if (Debug._DEBUG_MODE_) root.context.unlocked()
-            }
-
             RowLayout {
                 anchors.top: parent.top
                 anchors.right: parent.right
                 spacing: Constants.padding * 2
 
-                ClickableButton {
-
-                    iconname: "Suspend.svg"
+                ClickableBase {
+                    vector: "Suspend.svg"
                     size: Constants.icon_size
-                    styles.icon_color_idle: Constants.color_subtext
-                    styles.icon_color_active: Constants.color_text
+                    ink_color_idle: Constants.color_subtext
+                    ink_color_active: Constants.color_text
                     onClicked: Daemon.execute(["systemctl", "suspend"])
                 }
 
-                ClickableButton {
-
-                    iconname: "Power.svg"
+                ClickableBase {
+                    vector: "Power.svg"
                     size: Constants.icon_size
-                    styles.icon_color_idle: Constants.color_subtext
-                    styles.icon_color_active: Constants.color_text
+                    ink_color_idle: Constants.color_subtext
+                    ink_color_active: Constants.color_text
                     onClicked: Daemon.execute(["systemctl", "poweroff"])
                 }
             }

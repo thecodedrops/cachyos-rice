@@ -4,25 +4,22 @@ import qs
 import qs.Services
 import qs.Components
 
-import qs.Utilities
-
-ClickableButton {
+ClickableWithAccent {
     readonly property bool muted: PipewireService.defaultMicrophone?.audio?.muted ?? false
 
     size: Constants.icon_size
     padding: Constants.padding
     radius: Constants.radius
 
-    iconname: (muted) ? "Microphone-Off.svg" : "Microphone-On.svg"
+    vector: (muted) ? "Microphone-Off.svg" : "Microphone-On.svg"
 
-    styles.background_color_idle: Constants.control_color_background_default
+    background_color: Constants.control_color_background_default
 
-    styles.border_width: 1
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: Qt.alpha(Constants.volume_control_color_ink_default, 0.20)
+    border_color: Constants.control_color_border_default
+    border_color_active: Qt.alpha(Constants.volume_control_color_ink_default, 0.20)
 
-    styles.icon_color_idle: (muted) ? Constants.volume_control_color_ink_muted : Constants.volume_control_color_ink_default
-    styles.icon_color_active: Constants.volume_control_color_ink_active
+    ink_color_idle: (muted) ? Constants.volume_control_color_ink_muted : Constants.volume_control_color_ink_default
+    ink_color_active: Constants.volume_control_color_ink_active
 
     onClicked: if (PipewireService.defaultMicrophone.audio) {
         PipewireService.defaultMicrophone.audio.muted = !muted;

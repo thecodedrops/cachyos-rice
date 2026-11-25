@@ -158,23 +158,16 @@ Item {
                         }                        
                     }
 
-                    Row {
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        anchors.margins: Constants.spacing
-
-                        ClickableButton {
-                            iconname: "Desktop-Mirror.svg"
-                            size: Constants.icon_size
-                            styles.icon_color_idle: Constants.color_subtext
-                            styles.icon_color_active: Constants.color_text
-                        }
-                    }
+                    // Row {
+                    //     anchors.right: parent.right
+                    //     anchors.bottom: parent.bottom
+                    //     anchors.margins: Constants.spacing
+                    // }
                 }
             }
         }
 
-        ClickableButton {
+        ClickableWithFade {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.margins: Constants.padding
@@ -182,14 +175,16 @@ Item {
             padding: (root.zoomed) ? Constants.padding : (Constants.padding / 1.5)
 
             size: 32
-            iconname: "Capture-Screen.svg"
+            vector: "Capture-Screen.svg"
             radius: Constants.radius
 
-            styles.icon_color_idle: Constants.color_subtext
-            styles.icon_color_active: Constants.color_text
+            ink_color_active: Constants.color_subtext
+            ink_color_idle: Constants.color_text
 
-            styles.background_color_idle: Qt.alpha(Constants.color_surface, 0.5)
-            styles.background_color_active: Qt.alpha(Constants.color_surface, 1)
+            border_color: Qt.alpha(Constants.color_surface, 0.5)
+            
+            background_color: Qt.alpha(Constants.color_surface, 0.5)
+            background_color_active: Qt.alpha(Constants.color_surface, 1)
 
             onClicked: root.zoomed = !root.zoomed;
         }

@@ -66,28 +66,25 @@ StyledBox {
 
         Repeater {
             model: control.options
-            delegate: ClickableButton {
-                required property string vector
-                required property var command
-                required property bool disabled
+            delegate: ClickableWithFade {
+                required property var modelData
 
-                enabled: !disabled
+                visible: !modelData.disabled
 
                 padding: Constants.padding / 1.5
 
                 size: Constants.icon_size
-                iconname: vector
+                vector: modelData.vector
                 radius: Constants.radius / 2
 
-                styles.icon_color_idle: Constants.color_subtext
-                styles.icon_color_active: Constants.default_color_accent
+                ink_color_active: Constants.color_subtext
+                ink_color_idle: Constants.default_color_accent
+                
+                border_color: Qt.alpha(Constants.color_surface, 0)
+                background_color: Qt.alpha(Constants.color_surface, 0)
+                background_color_active: Qt.alpha(Constants.color_surface, 1)
 
-                styles.background_color_idle: Qt.alpha(Constants.color_surface, 0)
-                styles.background_color_active: Qt.alpha(Constants.color_surface, 1)
-
-                opacity: (enabled) ? 1 : 0.5
-
-                onClicked: command()
+                onClicked: modelData.command()
             }
         }
     }

@@ -5,21 +5,18 @@ import QtQuick
 import qs
 import qs.Components
 
-ClickableButton {    
+ClickableWithFade {    
     size: Constants.icon_size 
     padding: Constants.padding
     radius: (active) ? Constants.radius_active : Constants.radius
 
-    iconname: "Power.svg"
+    vector: "Power.svg"
     
-    styles.background_color_idle: Constants.control_color_background_default
-    styles.background_color_active: Constants.power_color_active
-    styles.icon_color_idle: Constants.power_color_active
-    styles.icon_color_active: Constants.power_color_ink_active
+    background_color: Constants.control_color_background_default
+    ink_color_active: Constants.power_color_active
+    ink_color_idle: Constants.power_color_ink_active
 
-    styles.border_width: 1
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: Constants.power_color_active
+    border_color: Constants.control_color_border_default
 
     Behavior on radius { NumberAnimation { duration: Constants.animation_duration/4; easing.type: Easing.OutCubic } }
 }

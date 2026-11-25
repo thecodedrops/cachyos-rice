@@ -4,26 +4,29 @@ import QtQuick
 
 import Quickshell.Widgets
 
+import qs
+
 ClickableButton {
     id: root
+    radius: Constants.radius
 
-    readonly property color border_color_base: root.border_color
-    readonly property color border_color_accent: Qt.alpha(root.accent_color, 1)
+    readonly property color border_color_idle: root.border_color
+    readonly property color border_color_active: Qt.alpha(root.ink_color_active, 1)
 
-    readonly property color bockground_color_base: root.background_color
-    readonly property color bockground_color_accent: Qt.alpha(root.accent_color, 1)
+    readonly property color bockground_color_idle: root.background_color
+    readonly property color background_color_active: Qt.alpha(root.ink_color_active, 1)
 
-    readonly property color effective_border_color: (enabled) ? border_color_base : root.muted_color
-    readonly property color effective_background_color: (is_active) ? bockground_color_accent : (enabled) ? bockground_color_base : root.muted_color
+    readonly property color effective_border_color: (enabled) ? border_color_idle : root.muted_color
+    readonly property color effective_background_color: (is_active) ? background_color_active : (enabled) ? bockground_color_idle : root.muted_color
 
-    effective_ink_color: (is_active) ? ink_color : (enabled) ? accent_color : muted_color
+    effective_ink_color: (is_active) ? ink_color_idle : (enabled) ? ink_color_active : muted_color
 
     background: ClippingRectangle {
         radius: root.radius
-        color: root.bockground_color_base
+        color: root.bockground_color_idle
 
         border.width: root.border_width
-        border.color: root.border_color_base
+        border.color: root.border_color_idle
 
         layer.enabled: true
         layer.smooth: true
@@ -39,7 +42,7 @@ ClickableButton {
                 x: root.enabled && root.is_active ? -2 : parent.width + 2
                 opacity: root.enabled && root.is_active ? 1 : 0
                 visible: opacity > 0
-                color: root.bockground_color_accent
+                color: root.background_color_active
 
                 Behavior on x {
                     enabled: root.enabled

@@ -14,8 +14,8 @@ Button {
     property string vector: ""
     property bool active: false
 
-    required property color accent_color
-    required property color ink_color
+    required property color ink_color_active
+    required property color ink_color_idle
 
     property color muted_color: Constants.color_overlay
 
@@ -25,7 +25,7 @@ Button {
     readonly property bool is_active: enabled && (hovered || active)
     readonly property string _icon_path: (`${Quickshell.shellDir}/${Constants.icons_directory}/${vector}`).replace("//", "/")
 
-    property color effective_ink_color: (is_active) ? accent_color : (enabled) ? ink_color : muted_color
+    property color effective_ink_color: (is_active) ? ink_color_active : (enabled) ? ink_color_idle : muted_color
 
     padding: 0
     hoverEnabled: enabled

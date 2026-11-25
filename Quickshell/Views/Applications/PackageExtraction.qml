@@ -4,7 +4,10 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
+// qmllint disable
 import Quickshell
+// qmllint enable
+
 import Quickshell.Io
 
 import qs
@@ -84,12 +87,13 @@ ColumnLayout {
 
                 Item { Layout.fillWidth: true }
 
-                ClickableWithAccent {
+                ClickableWithFade {
                     enabled: !_TarballInspectionProcess.running
                     padding: Constants.padding / 1.5
                     leftPadding: Constants.padding
                     rightPadding: Constants.padding
-                    colors.accent: Constants.color_sky
+                    ink_color_idle: Constants.color_base
+                    ink_color_active: Constants.color_sky
                     text: "Refresh"
                     onClicked: _FolderScanProcess.run()
                 }
@@ -224,13 +228,14 @@ ColumnLayout {
                 
                 Item { Layout.fillWidth: true }
 
-                ClickableWithAccent {
+                ClickableWithFade {
                     enabled: !_ExtractionProcess.running && !root.success
-                    topPadding: Constants.padding / 1.5
-                    bottomPadding: Constants.padding / 1.5
-                    colors.accent: Constants.color_red
-                    colors.muted: Constants.color_overlay
-                    colors.ink: Constants.color_base
+                    padding: Constants.padding / 1.5
+                    leftPadding: Constants.padding
+                    rightPadding: Constants.padding
+                    ink_color_active: Constants.color_red
+                    ink_color_idle: Constants.color_base
+                    muted_color: Constants.color_overlay
                     text: "Cancel"
 
                     onClicked: {
@@ -351,16 +356,21 @@ ColumnLayout {
                             border.color: Qt.alpha(Constants.spotlight_color_border, _TextFieldDestinationFolder.activeFocus ? 0.50 : 0.15)
                             radius: Constants.radius
                         }
+
+                        Keys.onReturnPressed: if (root.context.extractionDirectory.length > 0) _ExtractionProcess.run()
                     }
 
-                    ClickableWithAccent {
-                        enabled: (_ExtractionComponentLayout.selectedPackageIsAppImage ? root.context.extractionDirectory !== "" : (root.context.packageDirectory !== "" && _TextFieldDestinationFolder.text !== "")) && !_ExtractionProcess.running && !root.success
+                    ClickableWithFade {
+                        enabled: (_ExtractionComponentLayout.selectedPackageIsAppImage ? root.context.extractionDirectory !== "" :
+                                 (root.context.packageDirectory !== "" && _TextFieldDestinationFolder.text !== "")) && !_ExtractionProcess.running && !root.success
 
-                        Layout.fillHeight: true
+                        padding: Constants.padding / 1.5
+                        leftPadding: Constants.padding
+                        rightPadding: Constants.padding
 
-                        colors.accent: enabled ? Constants.color_green : Constants.color_overlay
-                        colors.muted: Constants.color_overlay
-                        colors.ink: Constants.color_base
+                        ink_color_active: Constants.color_green
+                        ink_color_idle: Constants.color_base
+                        muted_color: Constants.color_overlay
                         
                         text: "Extract"
                         onClicked: _ExtractionProcess.run()

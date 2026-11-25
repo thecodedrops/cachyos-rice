@@ -249,7 +249,7 @@ Singleton {
     readonly property color  spotlight_color_ink_muted:             color_subtext
 
     readonly property color  spotlight_color_background_default:    Qt.alpha(color_base, 0.10)
-    readonly property color  spotlight_color_background_active:     Qt.alpha(color_surface, 0.20)
+    readonly property color  spotlight_color_background_active:     Qt.alpha(color_surface, 0.10)
 
     // Screen Capture
     readonly property string screen_capture_command_region:         "~/.config/mango/scripts/satty.sh --region --save"

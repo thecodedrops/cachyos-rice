@@ -135,14 +135,14 @@ ColumnLayout {
                 tint: Qt.alpha(Constants.spotlight_color_ink_muted, (_SearchTextField.activeFocus) ? 0.60: 0.20)
             }
 
-            ClickableButton {
+            ClickableBase {
                 size: Constants.spotlight_icon_size
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.rightMargin: _SearchTextField._padding
-                iconname: root.showHiddenApps ? "Eye.svg" : "Eye-Off.svg"
-                styles.icon_color_idle: Constants.spotlight_color_ink_muted
-                styles.icon_color_active: Constants.spotlight_color_ink_active
+                vector: root.showHiddenApps ? "Eye.svg" : "Eye-Off.svg"
+                ink_color_idle: Constants.spotlight_color_ink_muted
+                ink_color_active: Constants.spotlight_color_ink_active
                 active: root.showHiddenApps
                 onClicked: {
                     root.showHiddenApps = !root.showHiddenApps;

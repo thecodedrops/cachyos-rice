@@ -34,6 +34,15 @@ ln -sf $HOME/.local/apps/obsidian.desktop ./.local/share/applications/obsidian.d
 
 Simulate notifications
 ```bash
+# Without libnotify
+gdbus call --session \
+  --dest=org.freedesktop.Notifications \
+  --object-path=/org/freedesktop/Notifications \
+  --method=org.freedesktop.Notifications.Notify \
+  "TestApp" 0 "dialog-information" "Test Notification" "Choose an action below:" \
+  '["opt1", "Accept", "opt2", "Decline"]' '{}' 5000
+
+# With libnotify
 notify-send -i discord -a "Discord" "Jane Doe" "Hey\n Are we still jumping on that raid tonight?"; /
 sleep 2; /
 notify-send -u critical -i dialog-warning -a "System Monitor" "Thermal Warning" "CPU temperature has exceeded 85°C"; /

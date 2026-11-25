@@ -5,19 +5,15 @@ import QtQuick
 import qs
 import qs.Components
 
-ClickableButton {
+ClickableWithAccent {
     size: Constants.icon_size
     padding: Constants.padding
     radius: Constants.icon_size
 
-    iconname: "Desktop.svg"
+    vector: "Desktop.svg"
 
-    styles.background_color_idle: Constants.control_color_background_default
-
-    styles.border_width: 1
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.border_color_active: Constants.display_control_color_active
-
-    styles.icon_color_idle: Constants.display_control_color_ink_default
-    styles.icon_color_active: Constants.display_control_color_active
+    background_color: Constants.control_color_background_default
+    border_color: Constants.control_color_border_default
+    ink_color_idle: Constants.display_control_color_ink_default
+    ink_color_active: Constants.display_control_color_active
 }

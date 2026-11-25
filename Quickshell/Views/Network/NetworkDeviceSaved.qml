@@ -138,14 +138,14 @@ ColumnLayout {
                         font.pixelSize: Constants.font_size_sm
                     }
 
-                    ClickableWithAccent {
+                    ClickableWithFade {
                         implicitWidth: 76
 
                         topPadding: Constants.padding / 1.5
                         bottomPadding: Constants.padding / 1.5
 
-                        colors.accent: Constants.network_color_critical
-                        colors.ink: Constants.network_color_ink_active
+                        ink_color_active: Constants.network_color_critical
+                        ink_color_idle: Constants.network_color_ink_active
                         text: "Forget"
 
                         onClicked: root.forget(_NetworkItem.uuid)

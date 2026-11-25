@@ -4,7 +4,7 @@ import QtQuick
 import Quickshell.Widgets
 
 WrapperMouseArea {
-    id: clickable
+    id: root
     readonly property int _animationDuration: 150
 
     hoverEnabled: true
@@ -13,5 +13,5 @@ WrapperMouseArea {
     onPressed: scale = 0.98
     onReleased: scale = 1.0
 
-    Behavior on scale { NumberAnimation { duration: clickable._animationDuration; } }
+    Behavior on scale { NumberAnimation { duration: root._animationDuration; } }
 }

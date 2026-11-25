@@ -9,11 +9,6 @@ The shell launches many processes - some of which stay alive in the background (
 - Visualize processes running under the shell.
 - Stop/Pause/Start specific processes on demand.
 
-### Buttons
-Clean up redundant button components, using only some generic versions.
-- Review use of `ClickableWithAccent` - it might actually be fit to replace all buttons.
-- Too many files now provide for button component: `Clickable`, `ClickableWithIcon`, `ClickableIcon`, `ClickableButton`.
-
 ### Screenshot utility
 Currently works as basic process that allows:
 - Region selection, Full screen
@@ -53,6 +48,14 @@ Changing / choosing a wallpaper, and theme in the future.
 		- Persist choices
 - Future: Add theme previews and selection to the tool.
 
+### Battery Profiles
+Currently only showing performance modes a big block buttons.
+- Should shift to more details about the battery
+	- Up-time since last shutdown / reboot
+	- CPU and RAM usage
+	- (Needs some research)
+- Change performance profile switcher to smaller almost tab-like switch
+
 ## Ideation Corner
 
 ### Floating Panels / Single Panel
@@ -78,3 +81,22 @@ Current `clickables` have a simple color animation whereby the background, text 
 	- Optional: Text fades out early and fades back in with new color towards the end.
 
 Might be interesting to try those out in Figma.
+
+### Keep Awake Control - Rotating icon only
+Not planning to do that now, but good to keep the code on hand.
+```qml
+contentItem.transform: Rotation {
+	origin.x: keepawake.contentItem.width / 2
+	origin.y: keepawake.contentItem.height / 2
+	
+	angle: inhibitor.enabled ? 270 : 0
+
+	Behavior on angle { 
+		RotationAnimation { 
+			id: anim_rotation 
+			duration: Constants.animation_duration 
+			easing.type: Easing.InOutQuad 
+		} 
+	}
+}
+```

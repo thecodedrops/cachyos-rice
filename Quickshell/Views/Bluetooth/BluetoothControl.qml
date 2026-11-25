@@ -7,7 +7,7 @@ import Quickshell.Bluetooth
 import qs
 import qs.Components
 
-ClickableWithAccent {
+ClickableWithFade {
     id: root
 
     // qmllint disable
@@ -64,11 +64,13 @@ ClickableWithAccent {
     padding: Constants.padding
     rightPadding: (text.length > 0) ? Constants.padding * 1.25 : Constants.padding
 
-    iconname: datamap.icon
-    colors.accent: datamap.accent
+    vector: datamap.icon
 
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.background_color_idle: Constants.control_color_background_default
+    ink_color_active: datamap.accent
+    ink_color_idle: Constants.bluetooth_color_ink_active
+
+    border_color: Constants.control_color_border_default
+    background_color: Constants.control_color_background_default
 
     font.family: Constants.font_family
 

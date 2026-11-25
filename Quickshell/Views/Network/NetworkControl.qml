@@ -8,7 +8,7 @@ import qs
 import qs.Services
 import qs.Components
 
-ClickableWithAccent {
+ClickableWithSweep {
     id: root
 
     component DatamapModel: QtObject {
@@ -87,12 +87,13 @@ ClickableWithAccent {
     padding: Constants.padding
     leftPadding: Constants.padding
     rightPadding: (text.length > 0) ? Constants.padding * 1.25 : Constants.padding
-    iconname: datamap.icon
+    vector: datamap.icon
 
-    colors.accent: datamap.accent
+    ink_color_idle: Constants.network_color_ink_active
+    ink_color_active: datamap.accent
 
-    styles.border_color_idle: Constants.control_color_border_default
-    styles.background_color_idle: Constants.control_color_background_default
+    border_color: Constants.control_color_border_default
+    background_color: Constants.control_color_background_default
 
     font.family: Constants.font_family
     text: Constants.network_control_hide_ssid ? "" : datamap?.label ?? ""

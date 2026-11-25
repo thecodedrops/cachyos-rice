@@ -8,8 +8,6 @@ import Quickshell
 import qs
 
 Button {
-    id: clickable
-
     required property int size
     required property string source
     required property color tint

@@ -7,7 +7,6 @@ import Quickshell
 
 import qs
 import qs.Layouts
-import qs.Services
 import qs.Utilities
 import qs.Components
 import qs.Views.Power
@@ -205,7 +204,7 @@ StyledBox {
 
             spacing: root._gap
 
-            ClickableButton {
+            ClickableWithAccent {
                 visible: (opacity) > 0
                 opacity: (root.navigation_stack.length > 1) ? 1 : 0
                 Behavior on opacity { NumberAnimation { duration: 200 } }
@@ -214,16 +213,13 @@ StyledBox {
                 padding: Constants.padding
                 radius: Constants.icon_size
 
-                iconname: "Arrow-Left.svg"
+                vector: "Arrow-Left.svg"
 
-                styles.background_color_idle: Constants.control_color_background_default
+                background_color: Constants.control_color_background_default
+                border_color: Constants.control_color_border_default
 
-                styles.border_width: 1
-                styles.border_color_idle: Constants.control_color_border_default
-                styles.border_color_active: Constants.control_color_ink_active
-
-                styles.icon_color_idle: Constants.control_color_ink_default
-                styles.icon_color_active: Constants.control_color_ink_active
+                ink_color_idle: Constants.control_color_ink_default
+                ink_color_active: Constants.control_color_ink_active
 
                 onClicked: root.back()
             }
@@ -242,21 +238,18 @@ StyledBox {
                 }
             }
             
-            ClickableButton {
+            ClickableWithAccent {
                 size: Constants.icon_size
                 padding: Constants.padding
                 radius: Constants.icon_size
 
-                iconname: "Applications.svg"
+                vector: "Applications.svg"
 
-                styles.background_color_idle: Constants.control_color_background_default
+                background_color: Constants.control_color_background_default
+                border_color: Constants.control_color_border_default
 
-                styles.border_width: 1
-                styles.border_color_idle: Constants.control_color_border_default
-                styles.border_color_active: Constants.control_color_ink_active
-
-                styles.icon_color_idle: Constants.control_color_ink_default
-                styles.icon_color_active: Constants.control_color_ink_active
+                ink_color_idle: Constants.control_color_ink_default
+                ink_color_active: Constants.control_color_ink_active
                
                 active: root.content === app_installer
                 onClicked: root.navigate(app_installer)

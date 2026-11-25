@@ -3,33 +3,25 @@ pragma ComponentBehavior: Bound
 import QtQuick
 
 import qs
-import qs.Components
 
 ClickableButton {
-    component Styles: QtObject {
-        property color accent: Constants.color_yellow
-        property color muted: Constants.color_overlay
-        property color ink: Constants.color_base
+    id: root
+    radius: Constants.radius
+
+    property color border_color_idle: root.border_color
+    property color border_color_active: Qt.alpha(root.ink_color_active, 1)
+
+    readonly property color effective_border_color: (is_active) ? border_color_active : (enabled) ? border_color_idle : root.muted_color
+
+    background: Rectangle {
+        radius: root.radius
+        color: root.background_color
+
+        border.width: root.border_width
+        border.color: root.effective_border_color
+
+        Behavior on border.color { ColorAnimation { duration: root.animation.duration } }
     }
 
-    property Styles colors: Styles {}
-    readonly property color _accent: (enabled) ? colors.accent : colors.muted
-
-    padding: Constants.padding
-
-    styles.background_color_idle: Qt.alpha(_accent, 0.05)
-    styles.background_color_active: Qt.alpha(_accent, 1)
-
-    styles.icon_color_idle: _accent
-    styles.icon_color_active: colors.ink
-
-    styles.border_width: 1
-    styles.border_color_idle: Qt.alpha(_accent, 0.5)
-    styles.border_color_active: Qt.alpha(_accent, 1)
-
-    styles.text_color_idle: _accent
-    styles.text_color_active: colors.ink
-
-    font.family: Constants.font_family
-    radius: Constants.radius
+    Behavior on radius { NumberAnimation { duration: root.animation.duration/2; easing.type: Easing.OutCubic } }
 }

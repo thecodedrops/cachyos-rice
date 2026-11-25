@@ -36,10 +36,9 @@ Rectangle {
 
         Timer { id: changeCooldown; running: false; interval: 1000 }
 
-        ClickableButton {
-            id: mutetoggle
+        ClickableBase {
             size: Constants.toast_icon_size
-            iconname: {
+            vector: {
                 if (PipewireService.defaultSink?.audio.muted) return "Volume-Muted.svg";
 
                 const volume = PipewireService.defaultSink?.audio.volume;
@@ -53,8 +52,8 @@ Rectangle {
                 return icons[safeIndex];
             }
             
-            styles.icon_color_idle: Constants.volume_control_color_ink_default
-            styles.icon_color_active: Constants.volume_control_color_ink_active
+            ink_color_idle: Constants.volume_control_color_ink_default
+            ink_color_active: Constants.volume_control_color_ink_active
 
             onClicked: PipewireService.defaultSink.audio.muted = !PipewireService.defaultSink?.audio.muted
         }

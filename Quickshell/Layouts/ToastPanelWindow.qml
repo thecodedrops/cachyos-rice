@@ -87,8 +87,6 @@ PanelWindow {
         toast_component.sourceComponent = container.get_component(container.activeKey);
         toast_item.state = "visible";
         timeout_toast.restart();
-
-        Debug.log([container.screen.name, "Toast"], container.activeKey.toUpperCase());
     }
 
     function get_component(key) {

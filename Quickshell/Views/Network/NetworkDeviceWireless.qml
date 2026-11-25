@@ -43,24 +43,24 @@ ColumnLayout {
         }
 
 
-        ClickableWithAccent {
+        ClickableWithFade {
             implicitWidth: 120
             implicitHeight: Constants.size - (Constants.padding / 2)
             
             Layout.maximumHeight: parent.height
             enabled: Networking.wifiEnabled
 
-            colors.accent: (!Networking.wifiEnabled) ? Constants.network_color_inactive :
-                           (root.is_scanning) ? Constants.network_color_critical :
-                           Constants.network_color_active
-            colors.ink: Constants.network_color_ink_active
+            muted_color: Constants.network_color_inactive
+            ink_color_active: (root.is_scanning) ? Constants.network_color_critical : Constants.network_color_active
+            ink_color_idle: Constants.network_color_ink_active
+
             text: (root.is_scanning) ? "Stop Scanning" : "Scan Networks"
 
             onClicked: root.device.scannerEnabled = !root.is_scanning;
         }
 
         // Power Toggle Button
-        ClickableButton {
+        ClickableWithFade {
             readonly property color accent: Constants.network_color_active
 
             implicitHeight: Constants.size - (Constants.padding / 2)
@@ -70,17 +70,11 @@ ColumnLayout {
 
             active: Networking.wifiEnabled
 
-            styles.background_color_idle: Constants.color_transparent
-            styles.background_color_active: accent
+            background_color: Constants.color_transparent
+            ink_color_idle: Constants.network_color_ink_active
+            ink_color_active: accent
 
-            styles.icon_color_idle: accent
-            styles.icon_color_active: Constants.network_color_ink_active
-
-            styles.border_width: 1
-            styles.border_color_idle: Qt.alpha(accent, 0.5)
-            styles.border_color_active: accent
-
-            iconname: "Power.svg"
+            vector: "Power.svg"
 
             onClicked: {
                 if (root.device) root.device.scannerEnabled = false;
@@ -260,14 +254,14 @@ ColumnLayout {
                                     visible: _NetworkItem.channel.length > 0
                                 }
 
-                                ClickableButton {
+                                ClickableBase {
                                     size: Constants.font_size_lg
                                     padding: 0
 
                                     enabled: _NetworkItem.is_known
-                                    styles.icon_color_idle: Constants.network_color_ink_muted
-                                    styles.icon_color_active: (enabled) ? Constants.network_color_ink_default : Constants.network_color_ink_muted
-                                    iconname: (enabled) ? "Tag-Filled.svg" : "Tag-Outline.svg"
+                                    ink_color_idle: Constants.network_color_ink_muted
+                                    ink_color_active: (enabled) ? Constants.network_color_ink_default : Constants.network_color_ink_muted
+                                    vector: (enabled) ? "Tag-Filled.svg" : "Tag-Outline.svg"
                                     opacity: enabled ? 1 : 0.4
                                     onClicked: _NetworkItem.forget()
                                 }
@@ -296,15 +290,13 @@ ColumnLayout {
                                     color: Constants.network_color_ink_muted
                                 }
 
-                                ClickableButton {
-                                    size: Constants.icon_size * 1.5
+                                IconControl {
+                                    size: Constants.icon_size
                                     padding: 0
 
-                                    styles.icon_color_idle: Constants.network_color_ink_muted
-                                    styles.border_width: 0
-
+                                    tint: Constants.network_color_ink_muted
                                     enabled: false
-                                    iconname: "Key.svg"
+                                    source: "Key.svg"
                                 }
                             }
 
@@ -344,23 +336,16 @@ ColumnLayout {
                                     }
                                 }
 
-                                ClickableButton {
+                                ClickableWithFade {
                                     readonly property color accent: Constants.network_color_critical
 
                                     size: (Constants.icon_size * 1.5) - (padding * 2)
                                     padding: Constants.padding / 1.5
 
-                                    styles.background_color_idle: Qt.alpha(accent, 0.2)
-                                    styles.background_color_active: Qt.alpha(accent, 1)
+                                    ink_color_active: accent
+                                    ink_color_idle: Constants.network_color_ink_active
 
-                                    styles.icon_color_idle: accent
-                                    styles.icon_color_active: Constants.network_color_ink_active
-
-                                    styles.border_width: 1
-                                    styles.border_color_idle: Qt.alpha(accent, 0.5)
-                                    styles.border_color_active: Qt.alpha(accent, 1)
-
-                                    iconname: "Dismiss.svg"
+                                    vector: "Dismiss.svg"
                                     radius: Constants.radius
 
                                     onClicked: _NetworkItem.pskInputOngoing = false;
@@ -382,15 +367,15 @@ ColumnLayout {
                                 Component {
                                     id: _ConnectActionComponent
 
-                                    ClickableWithAccent {
+                                    ClickableWithFade {
                                         implicitWidth: 96
                                         Layout.fillHeight: true
 
                                         topPadding: Constants.padding / 1.5
                                         bottomPadding: Constants.padding / 1.5
 
-                                        colors.accent: (_NetworkItem.connected) ? Constants.network_color_critical : Constants.network_color_active
-                                        colors.ink: Constants.network_color_ink_active
+                                        ink_color_active: (_NetworkItem.connected) ? Constants.network_color_critical : Constants.network_color_active
+                                        ink_color_idle: Constants.network_color_ink_active
                                         text: (_NetworkItem.connected) ? "Disconnect" : (_NetworkItem.pskInputOngoing ? "Submit" : "Connect")
 
                                         onClicked: _NetworkItem.handleConnect()

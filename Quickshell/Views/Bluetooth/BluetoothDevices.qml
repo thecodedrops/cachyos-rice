@@ -46,14 +46,15 @@ ColumnLayout {
             styles.color_active: Constants.bluetooth_color_busy
         }
 
-        ClickableWithAccent {
+        ClickableWithFade {
             implicitWidth: 108
             implicitHeight: Constants.size - (Constants.padding / 2)
 
             enabled: root.adapter.enabled
-            colors.accent: (root.adapter.discovering) ? Constants.bluetooth_color_critical : Constants.bluetooth_color_active
-            colors.muted: Constants.bluetooth_color_inactive
-            colors.ink: Constants.bluetooth_color_ink_active
+            ink_color_active: (root.adapter.discovering) ? Constants.bluetooth_color_critical : Constants.bluetooth_color_active
+            ink_color_idle: Constants.bluetooth_color_ink_active
+            
+            muted_color: Constants.bluetooth_color_inactive
             text: root.adapter.discovering ? "Stop Scan" : "Scan Devices"
             onClicked: {
                 if (root.adapter) {
@@ -63,25 +64,18 @@ ColumnLayout {
         }
 
         // Power Toggle Button
-        ClickableButton {
+        ClickableWithFade {
             implicitHeight: Constants.size - (Constants.padding / 2)
             implicitWidth: Constants.size - (Constants.padding / 2)
-            
             padding: Constants.padding
 
             active: root.adapter.enabled
 
-            styles.background_color_idle: Constants.color_transparent
-            styles.background_color_active: Constants.bluetooth_color_active
+            ink_color_idle: Constants.bluetooth_color_ink_active
+            ink_color_active: Constants.bluetooth_color_active
+            border_color: Constants.bluetooth_color_active
 
-            styles.icon_color_idle: Constants.bluetooth_color_active
-            styles.icon_color_active: Constants.bluetooth_color_ink_active
-
-            styles.border_width: 1
-            styles.border_color_idle: Constants.bluetooth_color_active
-            styles.border_color_active: Constants.bluetooth_color_active
-
-            iconname: "Power.svg"
+            vector: "Power.svg"
 
             onClicked: if (root.adapter) {
                 root.adapter.discovering = false;
@@ -217,70 +211,54 @@ ColumnLayout {
 
                         readonly property color muted: Qt.alpha(Constants.bluetooth_color_ink_muted, 0.5)
 
-                        ClickableButton {
+                        ClickableBase {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
                             active: _DeviceItem.modelData.blocked
 
-                            styles.icon_color_idle: _DeviceItemStatus.muted
-                            styles.icon_color_active: Constants.bluetooth_color_critical
-
-                            styles.border_width: 0
-                            radius: Constants.radius
-
-                            iconname: "Block.svg"
+                            ink_color_active: Constants.bluetooth_color_critical
+                            ink_color_idle: _DeviceItemStatus.muted
+                            vector: "Block.svg"
 
                             onClicked: _DeviceItem.modelData.blocked = !_DeviceItem.modelData.blocked
                         }
 
-                        ClickableButton {
+                        ClickableBase {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
                             active: _DeviceItem.modelData.wakeAllowed
 
-                            styles.icon_color_idle: _DeviceItemStatus.muted
-                            styles.icon_color_active: Constants.bluetooth_color_busy
-
-                            styles.border_width: 0
-                            radius: Constants.radius
-
-                            iconname: "Bolt.svg"
+                            ink_color_active: Constants.bluetooth_color_busy
+                            ink_color_idle: _DeviceItemStatus.muted
+                            vector: "Bolt.svg"
 
                             onClicked: _DeviceItem.modelData.wakeAllowed = !_DeviceItem.modelData.wakeAllowed
                         }
 
-                        ClickableButton {
+                        ClickableBase {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
                             active: _DeviceItem.modelData.trusted
 
-                            styles.icon_color_idle: _DeviceItemStatus.muted
-                            styles.icon_color_active: Constants.bluetooth_color_secure
-
-                            styles.border_width: 0
-                            radius: Constants.radius
-
-                            iconname: "Shield.svg"
+                            ink_color_active: Constants.bluetooth_color_secure
+                            ink_color_idle: _DeviceItemStatus.muted
+                            vector: "Shield.svg"
 
                             onClicked: _DeviceItem.modelData.trusted = !_DeviceItem.modelData.trusted
                         }
 
-                        ClickableButton {
+                        ClickableBase {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
 
                             active: _DeviceItem.modelData.bonded
 
-                            styles.icon_color_idle: (active) ? Constants.bluetooth_color_saved : _DeviceItemStatus.muted
-
-                            styles.border_width: 0
-                            radius: Constants.radius
-
-                            iconname: (active) ? "Tag-Filled.svg" : "Tag-Outline.svg"                          
-                            enabled: false
+                            ink_color_active: Constants.bluetooth_color_saved
+                            ink_color_idle: _DeviceItemStatus.muted
+                            vector: (active) ? "Tag-Filled.svg" : "Tag-Outline.svg"
                         }
                     }
 
@@ -300,14 +278,14 @@ ColumnLayout {
                             Component {
                                 id: _ConnectActionComponent
 
-                                ClickableWithAccent {
+                                ClickableWithFade {
                                     implicitWidth: 84
 
                                     topPadding: Constants.padding / 1.5
                                     bottomPadding: Constants.padding / 1.5
 
-                                    colors.accent: (_DeviceItem.connected) ? Constants.bluetooth_color_critical : Constants.bluetooth_color_active
-                                    colors.ink: Constants.bluetooth_color_ink_active
+                                    ink_color_active: (_DeviceItem.connected) ? Constants.bluetooth_color_critical : Constants.bluetooth_color_active
+                                    ink_color_idle: Constants.bluetooth_color_ink_active
                                     text: (_DeviceItem.connected) ? "Disconnect" : (_DeviceItem.paired ? "Connect" : "Pair")
 
                                     onClicked: _DeviceItem.clicked()
@@ -357,7 +335,7 @@ ColumnLayout {
                             }
                         }
 
-                        ClickableButton {
+                        ClickableWithFade {
                             Layout.fillHeight: true
                             implicitWidth: implicitHeight
                             padding: Constants.padding / 1.5
@@ -368,17 +346,11 @@ ColumnLayout {
                                 (!_DeviceItem.paired) ? Constants.bluetooth_color_inactive : 
                                     Constants.bluetooth_color_critical
 
-                            styles.background_color_idle: Qt.alpha(accent, 0.05)
-                            styles.background_color_active: accent
+                            ink_color_active: accent
+                            border_color: Qt.alpha(accent, 0.5)
+                            ink_color_idle: Constants.bluetooth_color_ink_active
 
-                            styles.border_width: 1
-                            styles.border_color_idle: Qt.alpha(accent, 0.5)
-                            styles.border_color_active: Qt.alpha(accent, 1)
-
-                            styles.icon_color_idle: accent
-                            styles.icon_color_active: Constants.bluetooth_color_ink_active
-
-                            iconname: "Dismiss.svg"
+                            vector: "Dismiss.svg"
                             radius: Constants.radius
 
                             onClicked: _DeviceItem.forget()

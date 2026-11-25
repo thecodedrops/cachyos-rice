@@ -119,14 +119,14 @@ ColumnLayout {
                             spacing: Constants.spacing
                             Layout.fillHeight: true
 
-                            ClickableButton {
+                            ClickableBase {
                                 size: Constants.font_size_lg
                                 padding: 0
 
                                 enabled: _NetworkItem.is_known
-                                styles.icon_color_idle: Constants.network_color_ink_muted
-                                styles.icon_color_active: (enabled) ? Constants.network_color_ink_default : Constants.network_color_ink_muted
-                                iconname: (enabled) ? "Tag-Filled.svg" : "Tag-Outline.svg"
+                                ink_color_idle: Constants.network_color_ink_muted
+                                ink_color_active: (enabled) ? Constants.network_color_ink_default : Constants.network_color_ink_muted
+                                vector: (enabled) ? "Tag-Filled.svg" : "Tag-Outline.svg"
                                 opacity: enabled ? 1 : 0.4
                                 onClicked: _NetworkItem.forget()
                             }
@@ -158,15 +158,15 @@ ColumnLayout {
                                 Component {
                                     id: _ConnectActionComponent
 
-                                    ClickableWithAccent {
+                                    ClickableWithFade {
                                         implicitWidth: 96
                                         Layout.fillHeight: true
 
                                         topPadding: Constants.padding / 1.5
                                         bottomPadding: Constants.padding / 1.5
 
-                                        colors.accent: (_NetworkItem.connected) ? Constants.network_color_critical : Constants.network_color_active
-                                        colors.ink: Constants.network_color_ink_active
+                                        ink_color_active: (_NetworkItem.connected) ? Constants.network_color_critical : Constants.network_color_active
+                                        ink_color_idle: Constants.network_color_ink_active
                                         text: (_NetworkItem.connected) ? "Disconnect" : "Connect"
 
                                         onClicked: _NetworkItem.handleConnect()
