@@ -195,7 +195,7 @@ Singleton {
 
     // Network
     readonly property bool   network_scramble_ssid:                 true
-    readonly property bool   network_control_hide_ssid:             true
+    readonly property bool   network_control_hide_ssid:             false
     readonly property real   network_control_max_width:             160
 
     readonly property real   network_threshold_warning:             0.50

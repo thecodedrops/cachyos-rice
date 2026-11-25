@@ -123,11 +123,6 @@ StyledBox {
                 onClicked: root.navigate(power_options)
                 Component { id: power_options; PowerOptions { max_height: 160; } }
             }
-
-            PowerControl {
-                iconname: "Lock.svg"
-                onClicked: EventOrchestrator.lockDevice()
-            }
         }
 
         // --- Widgets Row ---
