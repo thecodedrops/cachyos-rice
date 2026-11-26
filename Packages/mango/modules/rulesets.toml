@@ -1,0 +1,86 @@
+# Rules / Tags
+[[rule.tag_rule]]
+id = 					"*"
+layout_name = 			"dwindle"
+
+# Rules / Windows
+# Media Player
+[[rule.window_rule]]
+app_id = 				"mpv"
+is_floating = 			1
+width = 				960
+height = 				720
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+# File Manager
+[[rule.window_rule]]
+app_id = 				"hyprfm"
+is_floating = 			1
+width = 				960
+height = 				720
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+# GTK File Selection
+[[rule.window_rule]]
+app_id = 				"xdg-desktop-portal-gtk"
+is_floating = 			1
+width = 				960
+height = 				720
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+# Satty, Grim, Slurp
+[[rule.window_rule]]
+app_id = 				"com.gabm.satty"
+no_swallow = 			1
+is_fullscreen = 			0
+is_floating = 			1
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+# Satty, Grim, Slurp : Region Selection
+[[rule.layer_rule]]
+no_animation = 			1
+no_blur = 				1
+layer_name = 			"selection"
+
+# Firefox
+[[rule.window_rule]]
+title =					"Picture-in-Picture"
+app_id = 				"firefox"
+width = 				480
+height = 				270
+no_swallow = 			1
+is_fullscreen = 		0
+is_floating = 			1
+offset_x = 				-98
+offset_y =				-97
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+[[rule.window_rule]]
+title = 				"Library"
+app_id = 				"firefox"
+width = 				960
+height = 				600
+is_floating = 			1
+animation_type_open = 	"zoom"
+animation_type_close = 	"zoom"
+
+# Rules / Devices
+# Customize settings per device
+# [[rule.device_rule]]
+# name = "AT Translated Set 2 keyboard"
+# kb_layout = "us"
+#
+# [[rule.device_rule]]
+# name = "A4Tech USB Mouse"
+# accel_speed = 0
+# natural_scrolling = 0
+#
+# [[rule.device_rule]]
+# type = "trackpad"
+# tap_to_click = 1
+# natural_scrolling = 0

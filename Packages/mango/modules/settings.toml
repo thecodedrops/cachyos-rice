@@ -1,0 +1,268 @@
+# Environment Variables
+[env]
+ZDOTDIR = 								"~/.config/zsh"
+EDITOR = 								"micro"
+QS_ICON_THEME = 						"Adwaita"
+QT_QPA_PLATFORM = 						"Wayland;xcb"
+
+[var]
+TERMINAL =                              "foot"
+FILE_MANAGER =                          "~/.local/apps/hyprfm/hyprfm"
+
+[global]
+# Effects / Blur
+blur = 1
+blur_layer = 0
+blur_optimized = 0
+blur_params_num_passes = 2
+blur_params_radius = 5
+# blur_params_noise = 0.02
+# blur_params_brightness = 0.9
+# blur_params_contrast = 0.9
+# blur_params_saturation = 1.2
+
+# Effects / Shadows
+shadows = 0
+layer_shadows = 0
+shadow_only_floating = 1
+shadows_size = 10
+shadows_blur = 15
+shadows_position_x = 0
+shadows_position_y = 0
+shadows_color = 0x000000ff
+
+# Effects / Borders
+border_px = 2
+border_radius = 2
+no_radius_when_single = 0
+border_color = 0x45475a25
+no_border_when_single = 0
+
+# Effects / Focus States
+focus_color = 0xb4befeff
+focused_opacity = 0.95
+unfocused_opacity = 0.95
+
+# Appearance / Gaps
+gap_inner_horizontal = 6
+gap_inner_vertical = 6
+gap_outer_horizontal = 8
+gap_outer_vertical = 8
+
+# Appearance / Colors
+root_color = 0x201b14ff
+drop_color = 0x11111b20
+split_color = 0xEB441EFF
+urgent_color = 0xad401fff
+maximized_screen_color = 0xBABD2Cff #0x89aa61ff
+global_color = 0x8d64cfff #0x516c93ff
+overlay_color = 0x95C381ff #0x14a57cff
+
+# Appearance / Group Bars
+# always_show_group_bar = 0 # Show the group bar on every window.
+# group_bar_height = 33 # Group bar height.
+# group_bar_close_button_enable = 0 # Show the close button. Independent of always_show_group_bar.
+# group_bar_button_size = 16 # Close button size in px.
+# group_bar_button_margin = 4 # Close button inset from the right edge in px.
+# group_bar_button_color = "0xad401fff" # Close button colour.
+# group_bar_decorate_fg_color = "0x6C7086ff" # text color.
+# group_bar_decorate_bg_color = "0x6C7086ff" # background color.
+# group_bar_decorate_focus_fg_color = "0x6C7086ff" # text color for focus.
+# group_bar_decorate_focus_bg_color = "0x6C7086ff" # background color for focus.
+# group_bar_decorate_border_color = "0x6C7086ff" # border color.
+# group_bar_decorate_border_width = 4 # border width.
+# group_bar_decorate_corner_radius = 5 # corner radius.
+# group_bar_decorate_padding_x = 0 # horizontal padding.
+# group_bar_decorate_padding_y = 0 # vertical padding.
+# group_bar_decorate_font_desc = "Noto Sans" # font set.
+
+# Appearance / Title Bars - Shows in tag carousel (overcircle) and switcher
+title_message_bar_height = 0 # Title message bar height. Set to 0 to disable it.
+# title_message_bar_gap = 20 # Gap between the bar and the focused overview card or switcher panel.
+# title_message_bar_decorate_fg_color = "0xc0caf5ff" # Text color.
+# title_message_bar_decorate_bg_color = "0x1d2021ff" # Background color.
+# title_message_bar_decorate_focus_fg_color = "0x9ece6aff" # Text color while focused.
+# title_message_bar_decorate_focus_bg_color = "0x3c3836ff" # Background color while focused.
+# title_message_bar_decorate_border_color = "0x3b4261ff" # Border color.
+# title_message_bar_decorate_border_width = 0 # Border width.
+# title_message_bar_decorate_corner_radius = 15 # Corner radius.
+# title_message_bar_decorate_padding_x = 0 # Horizontal padding.
+# title_message_bar_decorate_padding_y = 0 # Vertical padding.
+# title_message_bar_decorate_font_desc = "monospace Bold 13" # Font description.
+
+# Appearance / Tab Bars
+# tab_bar_height = 33 # Height of the auto tab bar.
+# tab_bar_decorate_fg_color = "0xc0caf5ff" # text color.
+# tab_bar_decorate_bg_color = "0x1d2021ff" # background color.
+# tab_bar_decorate_focus_fg_color = "0x7aa2f7ff" # text color for focus.
+# tab_bar_decorate_focus_bg_color = "0x3c3836ff" # background color for focus.
+# tab_bar_decorate_border_color = "0x3b4261ff" # border color.
+# tab_bar_decorate_border_width = 4 # border width.
+# tab_bar_decorate_corner_radius = 5 # corner radius.
+# tab_bar_decorate_padding_x = 0 # horizontal padding.
+# tab_bar_decorate_padding_y = 0 # vertical padding.
+# tab_bar_decorate_font_desc = "monospace Bold 13" # font set.
+
+# Animations / Global
+animations = 1
+layer_animations = 1
+animation_type_open = "zoom"
+animation_type_close = "zoom"
+layer_animation_type_open = "fade"
+layer_animation_type_close = "fade"
+
+# Animations / Fade
+animation_fade_in = 1.00
+animation_fade_out = 1.00
+fade_in_begin_opacity = 0.40
+fade_out_begin_opacity = 0.80
+
+# Animations / Zoom
+zoom_initial_ratio = 0.90
+zoom_end_ratio = 0.90
+
+# Animations / Others
+tag_animation_direction = 1
+
+# Animations / Durations
+animation_duration_move = 500
+animation_duration_open = 400
+animation_duration_tag = 350
+animation_duration_close = 800 #300
+animation_duration_focus = 400
+
+# Animations / Curves
+animation_curve_open = [0.46, 1.00, 0.29, 1.10]
+animation_curve_move = [0.46, 1.00, 0.29, 1.00]
+animation_curve_tag = [0.46, 1.00, 0.29, 1.00]
+animation_curve_close = [0.08, 0.92, 0.00, 1.00]
+animation_curve_focus = [0.46, 1.00, 0.29, 1.00]
+animation_curve_opacity_fade_out = [0.58, 0.98, 0.58, 0.98]
+animation_curve_opacity_fade_in = [0.46, 1.00, 0.29, 1.00]
+
+# Layouts / General
+circle_layout = ["dwindle" , "scroller", "center_tile"]
+
+# Layouts / Scroller
+scroller_structs = 20
+scroller_default_proportion = 0.8
+scroller_focus_center = 0
+scroller_prefer_center = 1
+edge_scroller_pointer_focus = 1
+scroller_ignore_proportion_single = 0
+scroller_default_proportion_single = 1.0
+scroller_proportion_preset = [0.5, 0.8, 1.0]
+# scroller_prefer_overspread = 1 # Allow windows to overspread when there's extra space.
+# edge_scroller_focus_allow_speed = 0.00 # Allow pointer focus to happen if the pointer moves at a speed greater than this value.
+
+# Layouts / Master-Stack
+new_is_master = 1
+smart_gaps = 0
+default_master_factor = 0.5
+default_master_count = 1
+
+# Layouts / Master-Stack / Tile
+center_master_overspread = 1 # Master spreads across screen if no stack exists.
+center_when_single_stack = 0 # Center master when only one stack window exists.
+
+# Layouts / Dwindle 
+dwindle_smart_split = 0
+dwindle_drop_simple_split = 1
+dwindle_manual_split = 0
+dwindle_horizontal_split = 1
+dwindle_vertical_split = 1
+dwindle_preserve_split = 0
+# dwindle_split_ratio = 0.5 # Ratio used for new splits (0.05–0.95).
+# dwindle_smart_resize = 0 # When dragging to resize, move the split toward the cursor regardless of which side was grabbed.
+
+# Layouts / Monocle
+# monocle_tab_mode = 1 # Auto merge stacked windows into a tab in monocle layout.
+# monocle_right_button_close = 0 # Right click on the tab bar closes that window.
+# monocle_no_border = 0 # Remove window borders from tiled windows while the monocle layout is active.
+# monocle_no_gap = 0 # Remove gaps around tiled windows while the monocle layout is active.
+# monocle_no_radius = 0 # Remove window corner radii while the monocle layout is active.
+
+# Layouts / Deck
+# deck_tab_mode = 1 # Auto merge stack area windows into a tab in deck layout.
+
+# Settings / Focus
+focus_on_activate = 1
+sloppy_focus = 0
+focus_cross_monitor = 1
+focus_cross_tag = 1
+
+# Settings / Tags
+tag_num = 9 # Number of tags/workspaces (1–31) with overflowing clients grouped in last tag.
+tag_gather = 1 # Tags are compacted - eliminating gaps.
+tag_carousel = 1 # Enable tag carousel (cycling through tags).
+
+# Settings / Scratchpad
+scratchpad_width_ratio = 0.80
+scratchpad_height_ratio = 0.90
+scratchpad_color = 0xc4939dff
+single_scratchpad = 1
+# scratchpad_cross_monitor = 0 # Share the scratchpad pool across all monitors.
+
+# Settings / Cursor
+cursor_size = 24
+cursor_theme = "BibataModernIce"
+cursor_hide_timeout = 0
+cursor_hide_on_keypress = 1
+warp_cursor = 1
+
+# Settings / Overview
+overview_gap_inner = 12
+overview_gap_outer = 12
+enable_hotarea = 1
+hotarea_size = 10
+# hotarea_corner = 2 # Trigger corner: 0 top-left, 1 top-right, 2 bottom-left, 3 bottom-right.
+# hotarea_disable_on_fullscreen = 1 # Do not trigger the hot area while a fullscreen window is focused (0: disabled, 1: enabled).
+
+# Settings / Overcircle
+overcircle_center_ratio = 0.50 # Width of the centered focused window as a fraction of the usable screen width.
+
+# Settings / Drag Behaviour
+drag_tile_to_tile = 1 # Allow dragging a tiled window onto another to swap their positions.
+drag_tile_small = 0 # Allow dragging a tiled window temporarily to small size.
+drag_warp_cursor = 1 # Warp cursor when dragging windows to tile.
+
+# Settings / Miscellaneous
+xwayland_persistence = 1 # Keep XWayland running even when no X11 apps are open (reduces startup lag).
+sync_obj_enable = 1 # Enable drm_syncobj timeline support (helps with gaming stutter/lag).
+axis_bind_apply_timeout = 100 # Timeout (ms) for detecting consecutive scroll events for axis bindings.
+enable_floating_snap = 1 # Snap floating windows to edges or other windows.
+snap_distance = 50 # Max distance (pixels) to trigger floating snap.
+exchange_cross_monitor = 1 # Allow the exchange_client and move_client dispatchers to reach across monitor boundaries.
+float_full_to_top = 1 # Let fullscreen, floating and layer-shell top windows share one layer
+idle_inhibit_when_fullscreen = 1 # Keep idle inhibited while a fullscreen window is focused.
+# xwayland_ignore_scale = 0 # Disable global scale for xwayland.
+allow_lock_transparent = 1 # Allow the lock screen to be transparent.
+# allow_shortcuts_inhibit = 1 # Allow shortcuts to be inhibited by clients.
+# auto_reload_config = 1 # Watch the main config file and every source/source_optional file, then reload immediately after any of them changes.
+# idle_inhibit_ignore_visible = 0 # Allow invisible clients (e.g., background audio players) to inhibit idle.
+
+# Devices / Keyboard
+repeat_rate = 25
+repeat_delay = 600
+numlock_on = 1
+xkb_rules_layout = "us"
+# xkb_rules_model = "" # Keyboard model (e.g., pc104, macbook)
+# xkb_rules_variant = intl # Layout variant (e.g., dvorak, colemak, intl)
+# xkb_rules_options = "" # XKB options (e.g., caps:escape, ctrl:nocaps)
+
+# Devices / Trackpad
+disable_trackpad = 0
+tap_to_click = 1
+tap_and_drag = 1
+drag_lock = 1
+trackpad_natural_scrolling = 1
+trackpad_disable_while_typing = 1
+trackpad_left_handed = 0
+trackpad_middle_button_emulation = 0
+swipe_min_threshold = 1
+
+# Devices / Mouse
+mouse_natural_scrolling = 0
+mouse_accel_profile = 2
+mouse_accel_speed = 0.0
+# disable_middle_paste = 0 # Disable middle-click paste by turning off the whole primary selection. Only affects Wayland apps; X11 apps are unaffected. Restart apps after re-enabling.

@@ -1,0 +1,73 @@
+[bind.default]
+# Applications
+"SUPER+Return" =            "spawn, $TERMINAL"
+"SUPER+Escape" = 			"killclient"
+"SUPER+Tab" =               "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console toggle"
+"SUPER+S" =                 "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console screencapture"
+"SUPER+L" =                 "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console lock"
+"SUPER+Shift+Escape" =      "spawn_shell, killall quickshell"
+
+# File Manager
+"SUPER+E" =					"spawn, $FILE_MANAGER"
+
+# Layouts
+"SUPER+Grave" =             "switch_layout"
+"SUPER+A" =                 "move_client, next"
+
+# Overview
+"Alt+Tab" = "toggleoverview"
+"Ctrl+Alt+Tab" = "overcircle,next"
+
+# Window Swap
+"SUPER+Shift+Up" = "exchange_client, up"
+"SUPER+Shift+Down" = "exchange_client, down"
+"SUPER+Shift+Left" = "exchange_client, left"
+"SUPER+Shift+Right" = "exchange_client, right"
+
+# Window Float
+"Ctrl+Tab" = "togglefloating"
+
+# Window Move
+"SUPER+Left" = "tagtoleft, 1"
+"SUPER+Right" = "tagtoright, 1"
+
+# Audio and Microphone control
+"XF86AudioRaiseVolume" = "spawn, wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+"
+"XF86AudioLowerVolume" = "spawn, wpctl set-volume @DEFAULT_SINK@ 5%-"
+"XF86AudioMute" = "spawn, wpctl set-mute @DEFAULT_SINK@ toggle"
+"XF86AudioMicMute" = "spawn, wpctl set-mute @DEFAULT_SOURCE@ toggle"
+
+# Brightness control via Brightness CTL
+"XF86MonBrightnessUp" = "spawn, brightnessctl -n2 set 5%+"
+"XF86MonBrightnessDown" = "spawn, brightnessctl -n2 set 5%-"
+
+# Volume control via Player CTL
+"XF86AudioNext" = "spawn, playerctl next"
+"XF86AudioPlay" = "spawn, playerctl play-pause"
+"XF86AudioPrev" = "spawn, playerctl previous"
+
+# Compositor
+"SUPER+Delete" = "quit"
+"SUPER+1" = "view,1,0"
+"SUPER+2" = "view,2,0"
+"SUPER+3" = "view,3,0"
+"SUPER+4" = "view,4,0"
+"SUPER+5" = "view,5,0"
+"SUPER+6" = "view,6,0"
+"SUPER+7" = "view,7,0"
+"SUPER+8" = "view,8,0"
+"SUPER+9" = "view,9,0"
+
+# Screenshot
+"Print" = "spawn_shell, $HOME/.config/mango/scripts/satty.sh --region --save"
+
+[bind.default.conflict]
+"SUPER+Shift+R" = "reload_config"
+
+[mousebind.default]
+"SUPER+BTN_LEFT" = "moveresize,curmove"
+"SUPER+BTN_RIGHT" = "moveresize,curresize"
+
+[switchbind.default]
+"lid_on" = "disable_monitor, eDP-1"
+"lid_off" = "enable_monitor, eDP-1"

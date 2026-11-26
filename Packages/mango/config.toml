@@ -1,0 +1,9 @@
+# Sourcing Configurations
+source = [
+    "./modules/settings.toml",
+    "./modules/monitors.toml",
+    "./modules/rulesets.toml",
+    "./modules/keybinds.toml"
+]
+
+exec_once = ["$HOME/.config/mango/scripts/autostart.sh"]
