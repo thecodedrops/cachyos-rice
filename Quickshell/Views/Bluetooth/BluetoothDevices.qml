@@ -82,7 +82,7 @@ ColumnLayout {
                 root.adapter.enabled = !root.adapter.enabled;
             }
             
-            radius: (active) ? Constants.radius_active : Constants.radius
+            // radius: (active) ? Constants.radius_active : Constants.radius
             Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }
         }
     }

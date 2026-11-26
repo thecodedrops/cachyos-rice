@@ -2,16 +2,16 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 
-import qs
-
 ClickableButton {
     id: root
-    radius: Constants.radius
 
     property color border_color_idle: root.border_color
     property color border_color_active: Qt.alpha(root.ink_color_active, 1)
 
-    readonly property color effective_border_color: (is_active) ? border_color_active : (enabled) ? border_color_idle : root.muted_color
+    property bool persist_border_color: true
+
+    readonly property color effective_active_border_color: (persist_border_color && active) ? border_color_active : (hovered) ? border_color_active : border_color_idle
+    readonly property color effective_border_color: (is_active) ? effective_active_border_color : (enabled) ? border_color_idle : root.muted_color
 
     background: Rectangle {
         radius: root.radius

@@ -42,7 +42,7 @@ Button {
     icon.color: effective_ink_color
     icon.source: (vector.length > 0) ? Qt.resolvedUrl(_icon_path) : ""
 
-    onPressed: scale = 0.94
+    onPressed: scale = 0.95
     onReleased: scale = 1.00
 
     font.pixelSize: Constants.font_size

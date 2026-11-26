@@ -9,7 +9,6 @@ ClickableWithAccent {
 
     size: Constants.icon_size
     padding: Constants.padding
-    radius: Constants.radius
 
     vector: (muted) ? "Microphone-Off.svg" : "Microphone-On.svg"
 

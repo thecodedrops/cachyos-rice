@@ -97,8 +97,4 @@ ClickableWithSweep {
 
     font.family: Constants.font_family
     text: Constants.network_control_hide_ssid ? "" : datamap?.label ?? ""
-
-    radius: (active) ? Constants.radius_active : Constants.radius
-    
-    Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }
 }

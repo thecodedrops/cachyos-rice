@@ -4,11 +4,8 @@ import QtQuick
 
 import Quickshell.Widgets
 
-import qs
-
 ClickableButton {
     id: root
-    radius: Constants.radius
 
     readonly property color border_color_idle: root.border_color
     readonly property color border_color_active: Qt.alpha(root.ink_color_active, 1)

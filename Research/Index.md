@@ -9,6 +9,10 @@ The shell launches many processes - some of which stay alive in the background (
 - Visualize processes running under the shell.
 - Stop/Pause/Start specific processes on demand.
 
+### Toast System
+Needs rework. Right now it's too tightly coupled with the toast content.
+**Proposal:** Toasts are pushed via events with the component that should be rendered.
+
 ### Screenshot utility
 Currently works as basic process that allows:
 - Region selection, Full screen

@@ -60,7 +60,4 @@ ClickableWithSweep {
 
     border_color: Constants.control_color_border_default
     background_color: Constants.control_color_background_default
-
-    radius: (active) ? Constants.radius_active : Constants.radius
-    Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }
 }

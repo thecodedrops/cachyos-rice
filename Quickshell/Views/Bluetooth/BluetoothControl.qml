@@ -7,7 +7,7 @@ import Quickshell.Bluetooth
 import qs
 import qs.Components
 
-ClickableWithFade {
+ClickableWithSweep {
     id: root
 
     // qmllint disable
@@ -73,7 +73,4 @@ ClickableWithFade {
     background_color: Constants.control_color_background_default
 
     font.family: Constants.font_family
-
-    radius: (active) ? Constants.radius_active : Constants.radius
-    Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }
 }

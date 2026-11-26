@@ -72,14 +72,14 @@ Singleton {
     readonly property int    spacing:                               8
     readonly property int    gap:                                   8
 
-    readonly property real   roundness:                             0.25
+    readonly property real   roundness:                             0.25 // 0.25
     readonly property int    radius:                                roundness * 24
     readonly property int    radius_active:                         icon_size
 
     readonly property int    animation_duration:                    250
 
     readonly property color  default_background:                    color_base
-    readonly property color  default_color_accent:                  color_yellow
+    readonly property color  default_color_accent:                  color_green
 
     // On Screen Displays    
     readonly property int    toast_width:                           320
@@ -89,7 +89,7 @@ Singleton {
 
     readonly property color  toast_color_background:                default_background
     readonly property color  toast_color_border:                    color_surface
-    readonly property color  toast_color_ink_active:                color_yellow
+    readonly property color  toast_color_ink_active:                default_color_accent
 
     // Console Base Window
     readonly property int    console_width:                         720
@@ -108,7 +108,7 @@ Singleton {
     
     readonly property color  control_color_ink_default:             color_text
     readonly property color  control_color_ink_muted:               color_subtext
-    readonly property color  control_color_ink_active:              color_yellow
+    readonly property color  control_color_ink_active:              default_color_accent
 
     // Tab Container
     readonly property color  tab_color_ink_active:                  color_text
@@ -143,7 +143,7 @@ Singleton {
     readonly property color  battery_color_border:                  Qt.alpha(color_surface, 0.75)
     readonly property color  battery_color_background:              Qt.alpha(color_surface, 0.25)
     
-    readonly property color  battery_color_ink_default:             color_text
+    readonly property color  battery_color_ink_default:             color_lavender
     readonly property color  battery_color_ink_active:              color_base
     readonly property color  battery_color_ink_muted:               color_text
 
@@ -152,11 +152,11 @@ Singleton {
     readonly property color  battery_color_performance:             color_red
 
     // System : Power Button
-
     readonly property color  power_color_shutdown:                  color_red
     readonly property color  power_color_reboot:                    color_peach
     readonly property color  power_color_suspend:                   color_mauve
     readonly property color  power_color_logout:                    color_sapphire
+    readonly property color  power_color_lock:                      color_maroon
 
     readonly property color  power_color_background:                Qt.alpha(color_surface, 0.25)
     readonly property color  power_color_border:                    Qt.alpha(color_surface, 0.75)
@@ -177,12 +177,12 @@ Singleton {
     // Widgets : Audio
     readonly property color  volume_control_color_track:            color_surface
     readonly property color  volume_control_color_ink_default:      color_text
-    readonly property color  volume_control_color_ink_active:       color_yellow
+    readonly property color  volume_control_color_ink_active:       default_color_accent
     readonly property color  volume_control_color_ink_muted:        color_subtext
 
     // Widgets: Brightness
     readonly property color  display_control_color_track:           color_surface
-    readonly property color  display_control_color_active:          color_yellow
+    readonly property color  display_control_color_active:          default_color_accent
     readonly property color  display_control_color_muted:           color_overlay
     readonly property color  display_control_color_ink_default:     color_text
     readonly property color  display_control_color_ink_active:      color_base
@@ -212,7 +212,7 @@ Singleton {
     readonly property color  network_color_inactive:                color_surface
     readonly property color  network_color_warning:                 color_yellow
     readonly property color  network_color_critical:                color_red
-    readonly property color  network_color_busy:                    color_yellow
+    readonly property color  network_color_busy:                    color_peach
 
     // Bluetooth
     readonly property real   bluetooth_control_max_width:           160
@@ -224,7 +224,7 @@ Singleton {
     readonly property color  bluetooth_color_ink_muted:             color_subtext
     readonly property color  bluetooth_color_ink_active:            color_base
     
-    readonly property color  bluetooth_color_active:                color_sapphire
+    readonly property color  bluetooth_color_active:                color_blue
     readonly property color  bluetooth_color_inactive:              color_surface
     readonly property color  bluetooth_color_critical:              color_red
     readonly property color  bluetooth_color_saved:                 color_blue

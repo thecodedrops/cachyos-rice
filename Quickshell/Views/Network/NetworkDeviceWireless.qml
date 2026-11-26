@@ -42,7 +42,6 @@ ColumnLayout {
             styles.color_active: Constants.network_color_busy
         }
 
-
         ClickableWithFade {
             implicitWidth: 120
             implicitHeight: Constants.size - (Constants.padding / 2)
@@ -59,7 +58,6 @@ ColumnLayout {
             onClicked: root.device.scannerEnabled = !root.is_scanning;
         }
 
-        // Power Toggle Button
         ClickableWithFade {
             readonly property color accent: Constants.network_color_active
 
@@ -80,9 +78,6 @@ ColumnLayout {
                 if (root.device) root.device.scannerEnabled = false;
                 Networking.wifiEnabled = !Networking.wifiEnabled;
             }
-
-            radius: (active) ? Constants.radius_active : Constants.radius
-            Behavior on radius { NumberAnimation { duration: 100; easing.type: Easing.OutCubic } }
         }
     }
 
@@ -325,8 +320,8 @@ ColumnLayout {
 
                                     background: Rectangle {
                                         color: Constants.network_color_background
-                                        radius: Constants.radius / 2
-                                        border.color: _NetworkItemPSKTextField.activeFocus ? Constants.network_color_ink_muted : Constants.network_color_border
+                                        radius: Constants.radius / 1.5
+                                        border.color: _NetworkItemPSKTextField.activeFocus ? Qt.alpha(Constants.network_color_ink_muted, 0.75) : Constants.network_color_border
                                         border.width: 1
                                     }
 

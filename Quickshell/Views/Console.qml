@@ -131,7 +131,9 @@ StyledBox {
             Layout.rightMargin: root._padding
             spacing: root._gap
 
-            MuteControl {}
+            MuteControl {
+                radius: (muted) ? Constants.icon_size : Constants.radius 
+            }
 
             Clickable {
                 id: volume_wrapper
@@ -182,6 +184,8 @@ StyledBox {
 
             KeepAwakeControl {
                 inhibitor: Daemon.idle_inhibitor
+                persist_border_color: false
+                radius: (active) ? Constants.icon_size : Constants.radius 
             }
         }
 
