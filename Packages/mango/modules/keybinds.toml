@@ -1,18 +1,18 @@
 [bind.default]
 # Applications
-"SUPER+Return" =            "spawn, $TERMINAL"
-"SUPER+Escape" = 			"killclient"
-"SUPER+Tab" =               "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console toggle"
-"SUPER+S" =                 "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console screencapture"
-"SUPER+L" =                 "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console lock"
-"SUPER+Shift+Escape" =      "spawn_shell, killall quickshell"
+"SUPER+Return" = "spawn, $TERMINAL"
+"SUPER+Escape" = "killclient"
+"SUPER+Tab" = "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console toggle"
+"SUPER+SHIFT+S" = "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console screencapture"
+"SUPER+L" = "spawn_shell, quickshell -p ~/.config/quickshell/Shell.qml ipc call console lock"
+"SUPER+Shift+Escape" = "spawn_shell, killall quickshell"
 
 # File Manager
-"SUPER+E" =					"spawn, $FILE_MANAGER"
+"SUPER+E" = "spawn, $FILE_MANAGER"
 
 # Layouts
-"SUPER+Grave" =             "switch_layout"
-"SUPER+A" =                 "move_client, next"
+"SUPER+Grave" = "switch_layout"
+"SUPER+A" = "move_client, next"
 
 # Overview
 "Alt+Tab" = "toggleoverview"
@@ -57,6 +57,17 @@
 "SUPER+7" = "view,7,0"
 "SUPER+8" = "view,8,0"
 "SUPER+9" = "view,9,0"
+
+# Special Tag
+# "SUPER+S"= "toggle_special_tag" # Toggle the special workspace overlay (Tag 0)
+# "SUPER+Alt+S" = "tag_special_tag" # Move focused window to/from the special workspace
+
+# Scratchpad
+# "Alt+I" = "minimized"
+# "Alt+Shift+I" = "restore_minimized"
+# "Alt+Z" = "toggle_scratchpad"
+"Alt+T" = "toggle_named_scratchpad,org.telegram.desktop,none,Telegram"
+
 
 # Screenshot
 "Print" = "spawn_shell, $HOME/.config/mango/scripts/satty.sh --region --save"

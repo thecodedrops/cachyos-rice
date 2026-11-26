@@ -203,6 +203,14 @@ scratchpad_color = 0xc4939dff
 single_scratchpad = 1
 # scratchpad_cross_monitor = 0 # Share the scratchpad pool across all monitors.
 
+# Settings / Special Tag
+# special_dim = 0.5
+# special_gap_inner_horizontal = 10
+# special_gap_inner_vertical = 10
+# special_gap_outer_horizontal = 20
+# special_gap_outer_vertical = 20
+# special_tag_cross_monitor = 0
+
 # Settings / Cursor
 cursor_size = 24
 cursor_theme = "BibataModernIce"

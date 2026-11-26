@@ -14,6 +14,7 @@ This is not your everyday rice - this is **Basmati** rice 🍚
 │   └── ...
 ├── Scripts/
 │   # Standalone bash scripts for my convenience
+│   # Not required for the rice
 │   └── ...
 ├── Themes/
 │   # Theme files for copy (e.g. GTK, Grub/Plymouth etc.)
