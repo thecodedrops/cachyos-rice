@@ -40,3 +40,8 @@ For some of my utilities, the following packages are required:
 | Telegram | `telegram-desktop` with themes from https://github.com/catppuccin/telegram |
 
 ---
+
+This is a free-range home-grown hand-crafted organic artisanal cage-free ethically written project.   
+AI was used at most for research, but not to write code.
+
+> The goal was to have fun, and writing code is fun.
